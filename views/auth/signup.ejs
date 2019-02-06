@@ -1,0 +1,13 @@
+<form id="form" action="/auth/signup" method="POST">
+  <h2>Signup</h2>
+  <label for="username">Username</label>
+  <input type="text" name="username" placeholder="Your username">
+  <label for="password">Password</label>
+  <input type="password" name="password" placeholder="********">
+  <% if (errorMessage) { %>
+    <div class="error-message">
+      <%= errorMessage %>
+    </div>
+  <% } %>
+  <button type="submit">Create account</button>
+</form>
