@@ -1,5 +1,5 @@
 # Travel Note
-     
+
 ## Description
 
 App created to show the user a possible destination for the next holidays. It selects randomly a trip for the user and gives the possibility of store it.
@@ -7,14 +7,17 @@ App created to show the user a possible destination for the next holidays. It se
 
 ## User Stories
 
-- **404** - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault 
+- **404** - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault
 - **500** - As a user I want to see a nice error page when the super team screws it up so that I know that is not my fault
 - **homepage** - As a user I want to be able to access the homepage so that I see what the app is about and login and signup
-- **sign up** - As a user I want to sign up on the webpage so that I can see all the events that I could attend
+- **sign up** - As a user I want to sign up on the webpage so that I can start to use the app
 - **login** - As a user I want to be able to log in on the webpage so that I can get back to my account
 - **logout** - As a user I want to be able to log out from the webpage so that I can make sure no one will access my account
-- **trip** - As a user get random suggestion about the destination for the next trip
-- **your trips** - As a user I want to create a list of trips
+- **trip** - As a user I want to get a random suggestion about the destination for the next trip
+- **save trip** - As a user I want to save a trip
+- **reject trip** - As a user I want to reject a trip and get another trip
+- **my trips** - As a user I want to see a list of trips
+- **single trip** - As a user I want to see a detail of the trip
 - **update** - As a user I want to be able to update my profile
 - **delete** - As a user I want to be able to delete my profile
 
@@ -27,6 +30,7 @@ API:
 
 Extra feature:
 - Set up a budget feature
+- Set up the trip dates
 - Choose the departure city
 
 Manage your trips:
@@ -35,6 +39,9 @@ Manage your trips:
 - Make check box for your trip
 - Create your trip reviews
 - Add your favourite country
+
+Delete my account:
+- Delete the user from users collection. Delete the all the trips of the user. Redirect the logout.
 
 
 ## ROUTES:
@@ -46,30 +53,41 @@ Manage your trips:
 |POST|/user/signup|Add info from users to a data base and redirect to homepage.|
 |GET|/user/login|Renders the login page.|
 |POST|/user/login|Check if the user is in the data base and give it access. Redirect to homepage.|
-|POST|/user/logout|End user session. Redirect to the homepage.|
-|GET|/user/:id/edit|Renders the edit page.|
-|POST|/user/:id/update|Update the user info. Redirect the homepage.|
-|POST|/user/:id/delete|Delete the user info. Redirect the homepage.|
-|GET|/trip/:id|Renders the trip page.|
-|GET|/your-trips/:id|Renders the your trips page.|
-|POST|/your-trips/:id/delete|Delete one of your trip. Redirect to the your trips page.|
+|GET|/user/logout|End user session. Redirect to the homepage.|
+|GET|/user/edit|Renders the edit page.|
+|POST|/user/update|Update the user info. Redirect the homepage.|
+|GET|/trip/|Renders the random trip page.|
+|POST|/trip/|Save the trip. Redirect my trips.|
+|GET|/my-trips/|List my trips. Renders the my trips page.|
+|GET|/my-trips/:id/|Renders the one trip page.|
+|POST|/my-trips/:id/delete|Delete one of your trip. Redirect to the my trips page.|
+
+## Design framework
+- Home page
+- Login page
+- Signup page
+- Edit page
+- Trip page
+- Your trips page
 
 
 ## Models
 
 User model
- 
+
 ```
 username: String
 password: String
-trip: []
 ```
 
 Trip model
 
 ```
 city: String
-``` 
+ownerId: ObjectId ref User
+
+```
+
 
 ## Links
 
