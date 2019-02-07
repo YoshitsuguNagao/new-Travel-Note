@@ -1,5 +1,6 @@
 const express = require('express');
 const City = require('../models/city');
+const Trip = require('../models/trip');
 
 const router = express.Router();
 
@@ -15,6 +16,13 @@ router.get('/', (req, res, next) => {
     .catch(next);
 });
 
+router.post('/', (req, res, next) =>{
+  const { city } = req.body;
+  // console.log(req.session.currentUser._id)
+  Trip.create({ city, owner: req.session.currentUser._id })
+  // .then(() => {
 
 
+  // })
+});
 module.exports = router;

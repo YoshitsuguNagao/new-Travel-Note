@@ -3,7 +3,10 @@
 <p><%= city.name%></p>
 
 <p><a href="/trip">New trip</a></p>
-<p><a href="/my-trips">Save</a></p>
+<form action="/trip" method="post">
+<input type="hidden" name="city" value="<%= city.name%>">
+<button type="submit">Save</button>
+</form>
 
 
 
