@@ -11,7 +11,7 @@ const protectedRoute = require('./middlwwares/protectedRoute');
 
 //  Change the title of database
 mongoose
-  .connect('mongodb://localhost/title', { useNewUrlParser: true })
+  .connect('mongodb://localhost/travel-note', { useNewUrlParser: true })
   .then((x) => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`);
   })

@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
+const { ObjectId } = Schema.Types;
 
 const tripSchema = new Schema({
   city: String,
-  ownerId: String,
+  owner: { type: ObjectId, ref: 'User' },
 }, {
   timestamps: true,
 });
