@@ -14,7 +14,7 @@ router.get('/signup', (req, res, next) => {
 
 router.post('/signup', (req, res, next) => {
   const { username } = req.body;
-  const { password } = req.body;
+  const { password } = req.body
   const salt = bcrypt.genSaltSync(bcryptSalt);
   const hashPass = bcrypt.hashSync(password, salt);
 
@@ -71,7 +71,7 @@ router.post('/login', (req, res, next) => {
       if (bcrypt.compareSync(password, user.password)) {
         // Save the login in the session!
         req.session.currentUser = user;
-        res.redirect('/users');
+        res.redirect('/');
       } else {
         res.render('auth/login', {
           errorMessage: 'Incorrect password',
