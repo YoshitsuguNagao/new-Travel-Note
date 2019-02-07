@@ -16,4 +16,26 @@ router.get('/', (req, res, next) => {
     .catch(next);
 });
 
+router.get('/:id', (req, res, next) => {
+  const { id } = req.params;
+  Trip.findById(id)
+    .then((trip) => {
+      res.render('trip-details', { trip });
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
+router.post('/:id/delete', (req, res, next) => {
+  const { id } = req.params;
+  Trip.findByIdAndDelete(id)
+    .then((trip) => {
+      res.redirect('/my-trips');
+    })
+    .catch((error) => {
+      next(error);
+    });
+});
+
 module.exports = router;
