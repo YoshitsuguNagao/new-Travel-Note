@@ -49,13 +49,13 @@ Delete my account:
 |Method|URL|Description|
 |------|---|-----------|
 |GET|/|Renders the homepage.|
-|GET|/user/signup|Renders the signup page.|
-|POST|/user/signup|Add info from users to a data base and redirect to homepage.|
-|GET|/user/login|Renders the login page.|
-|POST|/user/login|Check if the user is in the data base and give it access. Redirect to homepage.|
-|GET|/user/logout|End user session. Redirect to the homepage.|
-|GET|/user/edit|Renders the edit page.|
-|POST|/user/update|Update the user info. Redirect the homepage.|
+|GET|/auth/signup|Renders the signup page.|
+|POST|/auth/signup|Add info from users to a data base and redirect to homepage.|
+|GET|/auth/login|Renders the login page.|
+|POST|/auth/login|Check if the user is in the data base and give it access. Redirect to homepage.|
+|GET|/auth/logout|End user session. Redirect to the homepage.|
+|GET|/profile|Renders the edit page.|
+|POST|/profile|Update the user info. Redirect the homepage.|
 |GET|/trip/|Renders the random trip page.|
 |POST|/trip/|Save the trip. Redirect my trips.|
 |GET|/my-trips/|List my trips. Renders the my trips page.|
