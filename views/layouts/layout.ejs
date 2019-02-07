@@ -7,8 +7,37 @@
     <link href="/stylesheets/style.css" rel="stylesheet">
   </head>
   <body>
-
-  <%- body %>
+  <header>
+    <nav role="navigation" class="nav-bar">
+    <div id="menuToggle">
+      <div>
+        <input type="checkbox" />
+        <span></span>
+        <span></span>
+        <span></span>
+        <ul id="menu">
+          <a href="/"><li>Home</li></a>
+          <a href="/trip/my-trips"><li>My trip</li></a>
+          <a href="/profile"><li>Profile</li></a>
+          <form action="/auth/logout" method="get">
+            <button class="nav-btn"><li>Logout</li></button>
+          </form>
+        </ul>
+      </div>
+      <div class="auth">
+        <div class="login">
+          <p><a href="/auth/login">Login</a></p>
+        </div>
+        <div class="signup">
+          <p><a href="/auth/signup">Signup</a></p>
+        </div>
+      </div>
+    </div>
+    </nav>
+  </header>
+  <main>
+    <%- body %>
+  </main>
 
   </body>
 </html>
