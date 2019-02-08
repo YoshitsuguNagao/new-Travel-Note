@@ -99,3 +99,11 @@
   justify-content: center;
   border: 1px solid grey;
  }
+
+ .trip-btn{
+  background: transparent url("../images/logo.png") no-repeat center center;
+  background-size: contain;
+  padding: 75px;
+  border: none;
+  color: transparent;
+ }

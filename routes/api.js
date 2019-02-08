@@ -9,7 +9,7 @@ router.get('/', (req, res, next) => {
     .then(({ data }) => {
       console.log('vuelos', data);
       
-      res.render('index', );
+      res.render('trip');
     })
     .catch((error) => {
       console.log('error', error);

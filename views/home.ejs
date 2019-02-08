@@ -1,11 +1,15 @@
-<div class="dates">
-  <div class="dates-from">
-    <p>From  <input type="date"></p>
+<form action="/api" method="POST">
+  <div class="dates">
+    <div class="dates-from">
+      <label for="date_from">From</label>
+      <input type="date" name="date_from">
+    </div>
+    <div class="dates-to">
+      <label for="dat-to"></label>
+      <input type="date" name="date_to">
+    </div>
   </div>
-  <div class="dates-to">
-    <p>To   <input type="date"></p>
+  <div class="logo">
+    <button class="trip-btn" type="submit">search trip</button>
   </div>
-</div>
-<div class="logo">
-  <a href="/trip"><img src="/images/logo.png" alt="logo"></a>
-</div>
+</form>
