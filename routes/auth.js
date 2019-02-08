@@ -35,7 +35,8 @@ router.post('/signup', (req, res, next) => {
           username,
           password: hashPass,
         })
-          .then(() => {
+          .then((user) => {
+            req.session.currentUser = user;
             res.redirect('/home');
           })
           .catch((error) => {
