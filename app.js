@@ -25,6 +25,7 @@ const authRouter = require('./routes/auth');
 const tripRouter = require('./routes/trip');
 const profileRouter = require('./routes/profile');
 const splashRouter = require('./routes/splash');
+const apiRouter = require('./routes/api');
 
 const app = express();
 
@@ -70,6 +71,7 @@ app.use('/home', protectedRoute, indexRouter);
 app.use('/users', protectedRoute, usersRouter);
 app.use('/trip', protectedRoute, tripRouter);
 app.use('/profile', protectedRoute, profileRouter);
+app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
