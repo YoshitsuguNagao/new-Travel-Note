@@ -84,3 +84,18 @@
  .empty-container {
    margin: 29.5px;
  }
+
+ 
+ .dates-from {
+  border-right: 1px solid grey;
+  width: 50%
+ }
+ .dates-to {
+  width: 50%
+ }
+ 
+ .dates{
+  display: flex;
+  justify-content: center;
+  border: 1px solid grey;
+ }
