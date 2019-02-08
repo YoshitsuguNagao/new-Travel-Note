@@ -1,9 +1,9 @@
 <h2>My trips</h2>
 
-<ul>
-<% trips.forEach(trip => { %>
-<li><%= trip.city %>
-<a href="/trip/my-trips/<%= trip.id %>">link</a>
-</li>
-<% }); %>
+<ul class="trip-list">
+  <% trips.forEach(trip => { %>
+    <li>
+      <a href="/trip/my-trips/<%= trip.id %>"><%= trip.city %></a>
+    </li>
+  <% }); %>
 </ul>

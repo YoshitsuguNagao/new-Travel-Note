@@ -1,13 +1,19 @@
-<form id="form" action="/auth/signup" method="POST">
-  <h2>Signup</h2>
-  <label for="username">Username</label>
-  <input type="text" name="username" placeholder="Your username">
-  <label for="password">Password</label>
-  <input type="password" name="password" placeholder="********">
-  <% if (errorMessage) { %>
-    <div class="error-message">
-      <%= errorMessage %>
+<div class="auth-container">
+  <form id="form" action="/auth/signup" method="POST">
+    <h2>SignUp</h2>
+    <div class="card">
+      <label for="username">Username</label><br>
+      <input type="text" name="username" placeholder="Your username">
     </div>
-  <% } %>
-  <button type="submit">Create account</button>
-</form>
+    <div class="card">
+      <label for="password">Password</label><br>
+      <input type="password" name="password" placeholder="********">
+    </div>
+    <% if (errorMessage) { %>
+      <div class="error-message"><%= errorMessage %></div>
+    <% } %>
+    <div class="auth-btn">
+      <button>Create account</button>
+    </div>
+  </form>
+</div>

@@ -30,14 +30,14 @@ router.post('/', (req, res, next) => {
   if (username) {
     User.findByIdAndUpdate( _id, { username })
       .then(() => {
-        res.redirect('trip/my-trips');
+        res.redirect('/profile');
       })
       .catch(next);
   }
   if (password) {
     User.findByIdAndUpdate( _id, { password: hashPass })
       .then(() => {
-        res.redirect('trip/my-trips');
+        res.redirect('/profile');
       })
       .catch(next);
   }

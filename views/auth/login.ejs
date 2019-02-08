@@ -1,14 +1,25 @@
-<form action="/auth/login" method="POST" id="form">
-  <h2>Login</h2>
-  <label for="username">Username</label>
-  <input type="text" name="username" placeholder="obiwan">
-  <label for="password">Password</label>
-  <input type="password" name="password" placeholder="thatsnomoon">
-  <% if (errorMessage) { %>
-    <div class="error-message"><%= errorMessage %></div>
-  <% } %>
-  <button>Sign in</button>
-  <p class="account-message">
-    Don't have an account? <a href="/auth/signup">Sign up</a>
-  </p>
-</form>
+<div class="auth-container">
+  <form action="/auth/login" method="POST" id="form">
+    <h2>Login</h2>
+    <div class="card">
+      <label for="username">Username</label><br>
+      <input type="text" name="username" placeholder="obiwan">
+    </div>
+    <div class="card">
+      <label for="password">Password</label><br>
+      <input type="password" name="password" placeholder="thatsnomoon">
+    </div>
+    <% if (errorMessage) { %>
+      <div class="error-message"><%= errorMessage %></div>
+    <% } %>
+    <div class="auth-btn">
+      <button>Sign in</button>
+    </div>
+    <div class="clearfix"></div>
+    <div>
+      <p class="account-message">
+        Don't have an account? <a href="/auth/signup">Sign up</a>
+      </p>
+    </div>
+  </form>
+</div>

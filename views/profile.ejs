@@ -1,10 +1,16 @@
-<h2>Profile</h2>
-
-<form id="form" action="/profile" method="POST">
-  <label for="username">Username</label>
-  <input type="text" name="username" value="<%= username%>">
-  <label for="password">Password</label>
-  <input type="password" name="password" placeholder="********">
-  <button type="submit">Update</button>
-</form>
-
+<div class="auth-container">
+  <form id="form" action="/profile" method="POST">
+    <h2>Profile</h2>
+    <div class="card">
+      <label for="username">Username</label><br>
+      <input type="text" name="username" value="<%= username%>">
+    </div>
+    <div class="card">
+      <label for="password">Password</label><br>
+      <input type="password" name="password" placeholder="********">
+    </div>
+    <div class="auth-btn">
+      <button>Update</button>
+    </div>
+  </form>
+</div>
