@@ -1,5 +1,6 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0;
 }
 
 a {
@@ -37,23 +38,6 @@ a {
  }
 
  a:hover
- {
-   color: tomato;
- }
-
- .nav-btn
- {
-   text-decoration: none;
-   color: #232323;
-
-   display: flex;
-   transition: color 0.3s ease;
-   border: none;
-   background: #ededed;
-   padding: 0;
- }
-
- .nav-btn:hover
  {
    color: tomato;
  }

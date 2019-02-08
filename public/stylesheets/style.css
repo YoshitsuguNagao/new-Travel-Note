@@ -40,3 +40,28 @@
 .trip-list {
   list-style: none;
 }
+
+.logout{
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+  margin-top: 8VH;
+}
+
+.logout-btn
+ {
+   text-decoration: none;
+   color: #232323;
+
+   display: flex;
+   transition: color 0.3s ease;
+   border: none;
+   padding: 0;
+   font-size: 1.5rem;
+   background: none;
+   padding: 1rem;
+ }
+
+ .logout-btn:hover
+ {
+   color: tomato;
+ }
