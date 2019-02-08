@@ -140,6 +140,7 @@ a {
   */
  #menu
  {
+   left: -350px;
    position: absolute;
    width: 300px;
    margin: -100px 0 0 -50px;
@@ -169,6 +170,8 @@ a {
  #menuToggle input:checked ~ ul
  {
    transform: none;
+   left: 0;
+
  }
 
 .auth {

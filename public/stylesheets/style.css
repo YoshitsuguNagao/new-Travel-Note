@@ -65,3 +65,17 @@
  {
    color: tomato;
  }
+
+ .get-started {
+  text-align: center;
+  font-size: 2rem;
+  color:white;
+ }
+ 
+ .splash-container {
+   background-color: #47a7cf;
+ }
+
+ .none {
+   display: none;
+ }

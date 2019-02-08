@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/', (req, res, next) => {
   // console.log(req.session.currentUser);
 
-  res.render('index', { title: 'Travel Note' });
+  res.render('home', { title: 'Travel Note' });
 });
 
 

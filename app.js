@@ -19,11 +19,12 @@ mongoose
     console.error('Error connecting to mongo', err);
   });
 
-const indexRouter = require('./routes/index');
+const indexRouter = require('./routes/home');
 const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
 const tripRouter = require('./routes/trip');
 const profileRouter = require('./routes/profile');
+const splashRouter = require('./routes/splash');
 
 const app = express();
 
@@ -63,8 +64,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/', splashRouter);
 app.use('/auth', authRouter);
-app.use('/', protectedRoute, indexRouter);
+app.use('/home', protectedRoute, indexRouter);
 app.use('/users', protectedRoute, usersRouter);
 app.use('/trip', protectedRoute, tripRouter);
 app.use('/profile', protectedRoute, profileRouter);
