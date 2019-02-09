@@ -10,9 +10,15 @@
   </div>
  
   <div>
-    <p><a href="/trip">New trip</a></p>
+    <form action="/api" method="post">
+      <input type="hidden" name="data" value="<%= data%>">
+      <input type="hidden" name="date_from" value="<%= date_from%>">
+      <input type="hidden" name="date_to" value="<%= date_to%>">
+      <input type="hidden" name="budget" value="<%= budget%>">
+      <button type="submit">New trip</button>
+    </form>
   </div>
-  <form action="/api" method="post">
+  <form action="/trip" method="post">
     <input type="hidden" name="city" value="<%= data.cityTo%>">
     <button type="submit">Save</button>
   </form>

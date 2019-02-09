@@ -25,12 +25,17 @@ router.post('/', (req, res, next) => {
   axios.get(`https://api.skypicker.com/flights?fly_from=BCN&date_from=${dateFormatChanger(date_from)}&curr=EUR&price_to=${budget}`)
     .then((apiDataKiwi) => {
       const data = apiDataKiwi.data.data[Math.floor(Math.random() * apiDataKiwi.data.data.length)];
-      console.log(Math.floor(Math.random() * apiDataKiwi.data.data.length)); 
+      // console.log(Math.floor(Math.random() * apiDataKiwi.data.data.length));
       return data;
     })
     .then((data) => {
       console.log(data);
-      res.render('trip', { data });
+      res.render('trip', {
+        data,
+        date_from,
+        date_to,
+        budget,
+      });
     })
     .catch(next);
 });
