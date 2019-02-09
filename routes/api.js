@@ -1,6 +1,6 @@
 const express = require('express');
 const axios = require('axios');
-
+const dateFormatChanger = require('../public/javascripts/dateFormatChanger')
 
 
 
@@ -21,7 +21,9 @@ router.get('/', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
   const { date_from, date_to, budget } = req.body;
-  console.log(date_from);
+  console.log(dateFormatChanger(date_from));
+
+  console.log('is working')
 
 //   axios.get(`https://api.skypicker.com/flights?fly_from=BCN`)
 
@@ -31,5 +33,6 @@ router.post('/', (req, res, next) => {
 //   .catch(next);
 // }
 });
+
 
 module.exports = router;

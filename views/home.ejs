@@ -2,12 +2,16 @@
   <div class="dates">
     <div class="dates-from">
       <label for="date_from">From</label>
-      <input type="date" name="date_from">
+      <input type="date" required pattern="^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$" name="date_from">
     </div>
     <div class="dates-to">
       <label for="dat-to"></label>
       <input type="date" name="date_to">
     </div>
+  </div>
+  <div>
+  <label for="date_from">Budget</label>
+  <input type="text" name="budget">
   </div>
   <div class="logo">
     <button class="trip-btn" type="submit">search trip</button>
