@@ -10,13 +10,15 @@ const router = express.Router();
 
 router.get('/', (req, res, next) => {
   // res.send('respond with a resource');
-  City.find({})
-    .then((cities) => {
-      const num = Math.floor(Math.random() * cities.length);
-      const city = cities[num];
-      res.render('trip', { city });
-    })
-    .catch(next);
+  // res.render('trip', { data })
+  console.log("I am in get /trip")
+  // City.find({})
+  //   .then((cities) => {
+  //     const num = Math.floor(Math.random() * cities.length);
+  //     const city = cities[num];
+  //     res.render('trip', { city });
+  //   })
+  //   .catch(next);
 });
 
 router.post('/', (req, res, next) => {
