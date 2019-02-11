@@ -183,7 +183,12 @@ color: black}
   color: transparent;
  }
 
- .tripInfo{
+.tripInfo{
+  height: 25vh;
+}
+
+.flight-info{
+  background-image: transparent url("../images/flight.jpg") no-repeat center center;
   height: 25vh;
  }
 
