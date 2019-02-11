@@ -36,7 +36,7 @@ router.post('/', async (req, res, next) => {
 
     const getAccommodationInfo = await axios.get(`http://developer.goibibo.com/api/voyager/get_hotels_by_cityid/?app_id=${process.env.APP_IP}&app_key=${process.env.APP_KEY}&city_id=${cityInfo.cityId}`);
     const accommodationData2 = Object.getOwnPropertyDescriptor(getAccommodationInfo.data.data, accommodationId);
-    // console.log(accommodationData2);
+    console.log(accommodationData2);
     const data = { flightData, accommodationData1, accommodationData2 };
 
     res.render('trip', {
