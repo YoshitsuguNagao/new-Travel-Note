@@ -101,7 +101,7 @@ router.post('/save', (req, res, next) => {
   const { city } = req.body;
   Trip.create({ city, owner: req.session.currentUser._id })
     .then(() => {
-      res.redirect('trip/my-trips');
+      res.redirect('/trip/my-trips');
     })
     .catch(next);
 });
