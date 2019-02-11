@@ -72,7 +72,7 @@ app.use('/home', protectedRoute, indexRouter);
 app.use('/users', protectedRoute, usersRouter);
 app.use('/trip', protectedRoute, tripRouter);
 app.use('/profile', protectedRoute, profileRouter);
-app.use('/api', apiRouter);
+// app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
