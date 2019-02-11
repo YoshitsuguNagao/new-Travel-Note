@@ -1,3 +1,17 @@
+/* ---- reset ---- */
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   margin: 0;
@@ -27,6 +41,10 @@ a {
    /* background: #232323; */
    color: #cdcdcd;
    font-family: "Avenir Next", "Avenir", sans-serif;
+   border-bottom: 1px solid grey;
+    box-shadow: 0 4px 6px -6px #222;
+    display: flex;
+    justify-content: space-between;
  }
 
  a
@@ -54,6 +72,7 @@ a {
 
    -webkit-user-select: none;
    user-select: none;
+
  }
 
  #menuToggle input
@@ -172,6 +191,11 @@ a {
    transform: none;
    left: 0;
 
+ }
+
+ .APP-name{
+  padding-right: 35%;
+  color: #47a7cf;
  }
 
 .auth {
