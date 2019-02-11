@@ -1,7 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const axios = require('axios');
 const Trip = require('../models/trip');
 const City = require('../models/city');
+const dateFormatChanger = require('../public/javascripts/dateFormatChanger');
+const getDuration = require('../public/javascripts/getDuration');
+const CityList = require('../models/cityList');
 
 const { ObjectId } = mongoose.Types;
 
