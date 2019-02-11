@@ -14,20 +14,23 @@
     <% } else { %>
       <nav role="navigation" class="nav-bar none">
     <% }%>
-    <div id="menuToggle">
-      <div>
-        <input type="checkbox" />
-        <span></span>
-        <span></span>
-        <span></span>
-        <ul id="menu">
-          <a href="/home"><li>Home</li></a>
-          <a href="/trip/my-trips"><li>My trip</li></a>
-          <a href="/profile"><li>Profile</li></a>
-        </ul>
-      </div>
-    </div>
-    </nav>
+        <div id="menuToggle">
+          <div>
+            <input type="checkbox" />
+            <span></span>
+            <span></span>
+            <span></span>
+            <ul id="menu">
+              <a href="/home"><li>Home</li></a>
+              <a href="/trip/my-trips"><li>My trip</li></a>
+              <a href="/profile"><li>Profile</li></a>
+            </ul>
+          </div>
+        </div>
+        <div class="APP-name">
+          <h2>TRAVEL NOTE</h2>
+        </div>
+      </nav>
   </header>
   <main>
     <%- body %>
