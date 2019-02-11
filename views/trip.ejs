@@ -1,6 +1,6 @@
 <div class="trip-container">
   <div class="tripInfo">
-    <p><%= data.cityTo%></p>
+    <p><%= data.flightData.cityTo%></p>
   </div>
   <div class="tripInfo">
     <p>Accommodation</p>
@@ -11,7 +11,7 @@
  <div class="tripView-btns">
     <div class="tripView-btn">
       <form action="/api" method="post">
-        <input type="hidden" name="data" value="<%= data%>">
+        <input type="hidden" name="data" value="<%= data.flightData%>">
         <input type="hidden" name="date_from" value="<%= date_from%>">
         <input type="hidden" name="date_to" value="<%= date_to%>">
         <input type="hidden" name="budget" value="<%= budget%>">
@@ -20,7 +20,7 @@
     </div>
     <div class="tripView-btn">
       <form action="/trip" method="post">
-        <input type="hidden" name="city" value="<%= data.cityTo%>">
+        <input type="hidden" name="city" value="<%= data.flightData.cityTo%>">
         <button class="tripView-btn-text" type="submit">Save</button>
       </form>
     </div>

@@ -1410,6 +1410,7 @@ const cityList = [
   { cityName: "Brownsville", cityId: '6385866814479520213', domesticFlag: '0' },
   { cityName: "Bristol", cityId: '6404556259229005353', domesticFlag: '0' },
   { cityName: "Brussel Hoofdstad", cityId: '127238622344789101', domesticFlag: '0' },
+  { cityName: "City of Brussels", cityId: '127238622344789101', domesticFlag: '0' },
   { cityName: "Brasilia", cityId: '4566476903093379281', domesticFlag: '0' },
   { cityName: "Bairnsdale", cityId: '5464204730388622542', domesticFlag: '0' },
   { cityName: "Banda Aceh", cityId: '4149811780713326098', domesticFlag: '0' },
