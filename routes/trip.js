@@ -28,16 +28,18 @@ router.get('/', (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    const { date_from, date_to, budget } = req.body;
-    const tripDuration = getDuration(date_from, date_to);
-    const departureDate = date_from.replace(/-/g, '');
-    const returnDate = date_to.replace(/-/g, '');
+    const { departureDate, returnDate, budget } = req.body;
+    const tripDuration = getDuration(departureDate, returnDate);
+    const departureDateForFlight = dateFormatChanger(departureDate);
+    const returnDateForFlight = dateFormatChanger(returnDate);
+    const departureDateForAccommodation = departureDate.replace(/-/g, '');
+    const returnDateForAccommodation = returnDate.replace(/-/g, '');
     console.log(departureDate, ' <=> ', returnDate, ' duration', tripDuration);
     const cityList = await CityList.find();
 
     /* Get flight info */
-    let flightBudget = budget / 2;
-    const getFlightInfo = await axios.get(`https://api.skypicker.com/flights?fly_from=BCN&date_from=${dateFormatChanger(date_from)}&date_to=${dateFormatChanger(date_from)}&return_from=${dateFormatChanger(date_to)}&return_to=${dateFormatChanger(date_to)}&curr=EUR&price_to=${flightBudget}&one_for_city=1`);
+    const flightBudget = budget / 2;
+    const getFlightInfo = await axios.get(`https://api.skypicker.com/flights?fly_from=BCN&date_from=${departureDateForFlight}&date_to=${departureDateForFlight}&return_from=${returnDateForFlight}&return_to=${returnDateForFlight}&curr=EUR&price_to=${flightBudget}&one_for_city=1`);
     const selectedFlightInfo = [];
     const selectedAccommodationInfo = [];
     getFlightInfo.data.data.forEach((oneFlightData) => {
@@ -49,16 +51,16 @@ router.post('/', async (req, res, next) => {
     });
     const flightData = selectedFlightInfo[Math.floor(Math.random() * selectedFlightInfo.length)];
     console.log(flightData);
-    flightBudget = flightData.price;
+    const flightCost = flightData.price;
 
     /* Get Accommodation info */
-    const accommodationBudgetEur = budget - flightBudget;
+    const accommodationBudgetEur = budget - flightCost;
     const cityName = flightData.cityTo;
     const cityInfo = await CityList.findOne({ cityName }, { cityId: 1, _id: 0 });
     console.log('cityId:', cityInfo, 'cityname:', cityName);
 
     // const start = new Date();
-    // const acc = await axios.all([getAccommodationList(cityInfo, departureDate, returnDate), getAccommodationInfo(cityInfo)])
+    // const acc = await axios.all([getAccommodationList(cityInfo, departureDateForAccommodation, returnDateForAccommodation), getAccommodationInfo(cityInfo)])
     //   .then((axios.spread((accommodationList, accommodationInfo) => {
     //     console.log(accommodationList);
     //     console.log(accommodationInfo);
@@ -74,7 +76,7 @@ router.post('/', async (req, res, next) => {
     // const accommodationData2 = Object.getOwnPropertyDescriptor(acc[1].data.data, accommodationId);
     // console.log(accommodationData2);
 
-    const getAccommodationList = await axios.get(`http://developer.goibibo.com/api/cyclone/?app_id=${process.env.APP_IP}&app_key=${process.env.APP_KEY}&city_id=${cityInfo.cityId}&check_in=${departureDate}&check_out=${returnDate}`);
+    const getAccommodationList = await axios.get(`http://developer.goibibo.com/api/cyclone/?app_id=${process.env.APP_IP}&app_key=${process.env.APP_KEY}&city_id=${cityInfo.cityId}&check_in=${departureDateForAccommodation}&check_out=${returnDateForAccommodation}`);
     const accommodationBudgetInr = 79.72 * accommodationBudgetEur / tripDuration;
     const accommodationIdList = Object.keys(getAccommodationList.data.data);
     for (let i = 0; i < accommodationIdList.length; i++) {
@@ -84,29 +86,32 @@ router.post('/', async (req, res, next) => {
       }
     }
     const accommodationData1 = selectedAccommodationInfo[Math.floor(Math.random() * selectedAccommodationInfo.length)];
+    console.log('number of hotel', selectedAccommodationInfo.length);
     console.log(accommodationData1);
     const getAccommodationInfo = await axios.get(`http://developer.goibibo.com/api/voyager/?app_id=${process.env.APP_IP}&app_key=${process.env.APP_KEY}&method=hotels.get_hotels_data&id_list=[${accommodationData1.accommodationId}]&id_type=_id`);
     const accommodationData2 = Object.getOwnPropertyDescriptor(getAccommodationInfo.data.data, accommodationData1.accommodationId);
     console.log(accommodationData2);
 
     console.log('flight: ', flightData.price, 'hotel: ', Math.ceil(accommodationData1.info.value.op / 79.72 * tripDuration));
-    const accommodationBudget = Math.ceil(accommodationData1.info.value.op / 79.72 * tripDuration);
+    const accommodationCost = Math.ceil(accommodationData1.info.value.op / 79.72 * tripDuration);
     const data = { flightData, accommodationData1, accommodationData2 };
+    const cost = { flightCost, accommodationCost };
     // console.log(data.flightData);
 
     res.render('trip', {
       data,
-      departureDate: date_from,
-      returnDate: date_to,
+      departureDate,
+      returnDate,
       budget,
+      cost,
     });
   } catch (error) {
     next(error);
   }
 });
 
-// function getAccommodationList(cityInfo, departureDate, returnDate) {
-//   return axios.get(`http://developer.goibibo.com/api/cyclone/?app_id=${process.env.APP_IP}&app_key=${process.env.APP_KEY}&city_id=${cityInfo.cityId}&check_in=${departureDate}&check_out=${returnDate}`);
+// function getAccommodationList(cityInfo, departureDateForAccommodation, returnDateForAccommodation) {
+//   return axios.get(`http://developer.goibibo.com/api/cyclone/?app_id=${process.env.APP_IP}&app_key=${process.env.APP_KEY}&city_id=${cityInfo.cityId}&check_in=${departureDateForAccommodation}&check_out=${returnDateForAccommodation}`);
 // }
 
 // function getAccommodationInfo(cityInfo) {
@@ -114,11 +119,11 @@ router.post('/', async (req, res, next) => {
 // }
 
 router.post('/save', (req, res, next) => {
-  const { city } = req.body;
+  const { city, data } = req.body;
   Trip.create({
     city,
     owner: req.session.currentUser._id,
-    flight: data.flight,
+    flight: data.flightData,
   })
     .then(() => {
       res.redirect('/trip/my-trips');

@@ -1,12 +1,12 @@
 <form action="/trip" method="POST">
   <div class="dates">
     <div class="dates-from">
-      <label for="date_from">From</label></br>
-      <input type="date" min="2019-02-15" required pattern="^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$" name="date_from" required>
+      <label for="departureDate">From</label></br>
+      <input type="date" min="2019-02-15" required pattern="^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$" name="departureDate" required>
     </div>
     <div class="dates-to">
-      <label for="dat-to">To</label></br>
-      <input type="date" name="date_to" required>
+      <label for="returnDate">To</label></br>
+      <input type="date" name="returnDate" min="2019-02-15" required>
     </div>
   </div>
   <div class="budget-imput">
