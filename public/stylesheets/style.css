@@ -188,7 +188,14 @@ color: black}
 }
 
 .flight-info{
-  background-image: transparent url("../images/flight.jpg") no-repeat center center;
+  background: url("../images/flight.jpg") no-repeat center center;
+  background-size: cover;
+  height: 25vh;
+ }
+
+.hotel-info{
+  background: url("../images/hotel.jpg") no-repeat center center;
+  background-size: cover;
   height: 25vh;
  }
 
