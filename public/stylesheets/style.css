@@ -189,82 +189,75 @@ color: black}
 }
 
 .flight-info{
+  height: 27vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+ }
+
+ .flight-image{
   background: url("../images/flight.jpg") no-repeat center center;
   background-size: cover;
-  height: 27vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
+  height: 100%;
   opacity: 0.5;
-  /* z-index: 0;
-  position: relative;
-  overflow: hidden; */
  }
-/* .flight-info:before{
-  content: '';
-  background: inherit;
-  height: 25vh;
-  z-index: -1;
-  position: absolute;
-  filter: blur(5px);
-  top: -5px;
-  bottom: -5px;
-  right: -5px;
-  left: -5px;
- } */
 
  .city-name{
-   opacity: 1;
+  position: absolute;
+  text-shadow: 3px 2px 3px #312e2e;
+  text-align: center;
+  width: 100%;
+}
+
+
+
+.accommodation-info{
+  height: 27vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  position: relative;
  }
 
-.hotel-info{
+.accommodation-image{
   background: url("../images/hotel.jpg") no-repeat center center;
   background-size: cover;
-  height: 27vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  z-index: 0;
-  position: relative;
-  overflow: hidden;
+  height: 100%;
+  opacity: 0.5;
  }
-.hotel-info:before{
-  content: '';
-  background: inherit;
-  z-index: -1;
+
+.accommodation-name{
   position: absolute;
-  filter: blur(5px);
-  top: -5px;
-  bottom: -5px;
-  right: -5px;
-  left: -5px;
- }
+  text-shadow: 3px 2px 3px #312e2e;
+  width: 100%;
+}
+
+
 
 .activity-info{
-  background: url("../images/activity.jpg") no-repeat center center;
-  background-size: cover;
   height: 27vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  z-index: 0;
   position: relative;
-  overflow: hidden;
+
  }
 
-.activity-info:before{
- content: '';
-  background: inherit;
-  z-index: -1;
-  position: absolute;
-  filter: blur(5px);
-  top: -5px;
-  bottom: -5px;
-  right: -5px;
-  left: -5px;
+.activity-image{
+  background: url("../images/activity.jpg") no-repeat center center;
+  background-size: cover;
+  height: 100%;
+  opacity: 0.5;
+ }
+
+.activity-name{
+   position: absolute;
+   text-shadow: 3px 2px 3px #312e2e;
+   width: 100%;
  }
 
  .tripView-btns{
