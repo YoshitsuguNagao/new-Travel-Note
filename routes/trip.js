@@ -39,7 +39,7 @@ router.post('/', async (req, res, next) => {
 
     /* Get flight info */
     const flightBudget = budget / 2;
-    const getFlightInfo = await axios.get(`https://api.skypicker.com/flights?fly_from=BCN&date_from=${departureDateForFlight}&date_to=${departureDateForFlight}&return_from=${returnDateForFlight}&return_to=${returnDateForFlight}&curr=EUR&price_to=${flightBudget}&one_for_city=1`);
+    const getFlightInfo = await axios.get(`https://api.skypicker.com/flights?fly_from=BCN&date_from=${departureDateForFlight}&date_to=${departureDateForFlight}&return_from=${returnDateForFlight}&return_to=${returnDateForFlight}&curr=EUR&price_to=${flightBudget}&one_for_city=1&max_stopovers=1`);
     const selectedFlightInfo = [];
     const selectedAccommodationInfo = [];
     getFlightInfo.data.data.forEach((oneFlightData) => {
@@ -94,10 +94,12 @@ router.post('/', async (req, res, next) => {
 
     console.log('flight: ', flightData.price, 'hotel: ', Math.ceil(accommodationData1.info.value.op / 79.72 * tripDuration));
     const accommodationCost = Math.ceil(accommodationData1.info.value.op / 79.72 * tripDuration);
-    const data = { flightData, accommodationData1, accommodationData2 };
-    const cost = { flightCost, accommodationCost };
-    // console.log(data.flightData);
 
+    /* Get Activity info */
+
+    /* Send info */
+    const data = { flightData, accommodationData1, accommodationData2 };
+    const cost = { budget, flightCost, accommodationCost };
     res.render('trip', {
       data,
       departureDate,
@@ -119,11 +121,22 @@ router.post('/', async (req, res, next) => {
 // }
 
 router.post('/save', (req, res, next) => {
-  const { city, data } = req.body;
+  let { city, departureDate, returnDate, cost, flightData, accommodationData1, accommodationData2 } = req.body;
+  cost = JSON.parse(cost);
+  flightData = JSON.parse(flightData);
+  accommodationData1 = JSON.parse(accommodationData1);
+  accommodationData2 = JSON.parse(accommodationData2);
   Trip.create({
     city,
+    departureDate,
+    returnDate,
     owner: req.session.currentUser._id,
-    flight: data.flightData,
+    flight: flightData,
+    accommodation: {
+      data1: accommodationData1,
+      data2: accommodationData2,
+    },
+    cost,
   })
     .then(() => {
       res.redirect('/trip/my-trips');
@@ -136,7 +149,7 @@ router.get('/my-trips', (req, res, next) => {
   const { _id } = req.session.currentUser;
   Trip.find({ owner: ObjectId(_id) })
     .then((trips) => {
-      console.log(trips);
+      // console.log(trips);
       res.render('my-trips', { trips });
     })
     .catch(next);

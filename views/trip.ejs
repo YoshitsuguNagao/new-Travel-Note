@@ -31,8 +31,10 @@
         <input type="hidden" name="city" value="<%= data.flightData.cityTo%>">
         <input type="hidden" name="departureDate" value="<%= departureDate%>">
         <input type="hidden" name="returnDate" value="<%= returnDate%>">
-        <input type="hidden" name="cost" value="<%= cost%>">
-        <input type="hidden" name="data" value="<%= data%>">
+        <input type="hidden" name="cost" value="<%= JSON.stringify(cost)%>">
+        <input type="hidden" name="flightData" value="<%= JSON.stringify(data.flightData)%>">
+        <input type="hidden" name="accommodationData1" value="<%= JSON.stringify(data.accommodationData1)%>">
+        <input type="hidden" name="accommodationData2" value="<%= JSON.stringify(data.accommodationData2)%>">
         <button class="tripView-btn-text" type="submit">Save</button>
       </form>
     </div>
