@@ -19,7 +19,7 @@
   </div>
  <div class="tripView-btns">
     <div class="tripView-btn">
-      <form action="/trip" method="post">
+      <form action="/trip" method="POST">
         <input type="hidden" name="departureDate" value="<%= departureDate%>">
         <input type="hidden" name="returnDate" value="<%= returnDate%>">
         <input type="hidden" name="budget" value="<%= budget%>">
@@ -27,7 +27,7 @@
       </form>
       </div>
       <div class="tripView-btn">
-      <form action="/trip/save" method="post">
+      <form action="/trip/save" method="POST">
         <input type="hidden" name="city" value="<%= data.flightData.cityTo%>">
         <input type="hidden" name="departureDate" value="<%= departureDate%>">
         <input type="hidden" name="returnDate" value="<%= returnDate%>">

@@ -15,7 +15,7 @@ const router = express.Router();
 router.get('/', (req, res, next) => {
   // res.send('respond with a resource');
   // res.render('trip', { data })
-  console.log("I am in get /trip")
+  console.log('I am in get /trip');
   // City.find({})
   //   .then((cities) => {
   //     const num = Math.floor(Math.random() * cities.length);
@@ -34,7 +34,6 @@ router.post('/', async (req, res, next) => {
     const returnDateForFlight = dateFormatChanger(returnDate);
     const departureDateForAccommodation = departureDate.replace(/-/g, '');
     const returnDateForAccommodation = returnDate.replace(/-/g, '');
-    console.log(departureDate, ' <=> ', returnDate, ' duration', tripDuration);
     const cityList = await CityList.find();
 
     /* Get flight info */
@@ -50,14 +49,12 @@ router.post('/', async (req, res, next) => {
       }
     });
     const flightData = selectedFlightInfo[Math.floor(Math.random() * selectedFlightInfo.length)];
-    console.log(flightData);
     const flightCost = flightData.price;
 
     /* Get Accommodation info */
     const accommodationBudgetEur = budget - flightCost;
     const cityName = flightData.cityTo;
     const cityInfo = await CityList.findOne({ cityName }, { cityId: 1, _id: 0 });
-    console.log('cityId:', cityInfo, 'cityname:', cityName);
 
     // const start = new Date();
     // const acc = await axios.all([getAccommodationList(cityInfo, departureDateForAccommodation, returnDateForAccommodation), getAccommodationInfo(cityInfo)])
@@ -85,21 +82,13 @@ router.post('/', async (req, res, next) => {
         selectedAccommodationInfo.push({ accommodationId: accommodationIdList[i], info: accommodation });
       }
     }
-    const accommodationData1 = selectedAccommodationInfo[Math.floor(Math.random() * selectedAccommodationInfo.length)];
-    console.log('number of hotel', selectedAccommodationInfo.length);
-    console.log("accommodation data 1", accommodationData1);
-    const getAccommodationInfo = await axios.get(`http://developer.goibibo.com/api/voyager/?app_id=${process.env.APP_IP}&app_key=${process.env.APP_KEY}&method=hotels.get_hotels_data&id_list=[${accommodationData1.accommodationId}]&id_type=_id`);
-    const accommodationData2 = Object.getOwnPropertyDescriptor(getAccommodationInfo.data.data, accommodationData1.accommodationId);
-    console.log("accommodation data 1", accommodationData2);
-
-    console.log('flight: ', flightData.price, 'hotel: ', Math.ceil(accommodationData1.info.value.op / 79.72 * tripDuration));
-    const accommodationCost = Math.ceil(accommodationData1.info.value.op / 79.72 * tripDuration);
-
+    const originalAccommodationData1 = selectedAccommodationInfo[Math.floor(Math.random() * selectedAccommodationInfo.length)];
+    const getAccommodationInfo = await axios.get(`http://developer.goibibo.com/api/voyager/?app_id=${process.env.APP_IP}&app_key=${process.env.APP_KEY}&method=hotels.get_hotels_data&id_list=[${originalAccommodationData1.accommodationId}]&id_type=_id`);
+    const originalAccommodationData2 = Object.getOwnPropertyDescriptor(getAccommodationInfo.data.data, originalAccommodationData1.accommodationId);
+    const accommodationCost = Math.ceil(originalAccommodationData1.info.value.op / 79.72 * tripDuration);
     /* Get Activity info */
-    const latitude = accommodationData2.value.hotel_geo_node.location.lat;
-    console.log('latitude', latitude);
-    const longitude = accommodationData2.value.hotel_geo_node.location.long;
-    console.log('latitude', longitude);
+    const latitude = originalAccommodationData2.value.hotel_geo_node.location.lat;
+    const longitude = originalAccommodationData2.value.hotel_geo_node.location.long;
 
     const amusementParkList = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=amusement_park&key=${process.env.API_ACCOMMODATION_KEY}`);
     // console.log('amusementParkList', amusementParkList.data.results);
@@ -122,12 +111,16 @@ router.post('/', async (req, res, next) => {
     const activitiesList = [...amusementParkListSorted, ...artGalleryListSorted, ...churchListSorted, parkListSorted, ...nightClubListSorted];
     // console.log('merge activities', activitiesList);
     const activity = activitiesList[(Math.floor(Math.random() * activitiesList.length))];
-    
-    console.log(activity);
 
+    const accommodationData1 = originalAccommodationData1;
+    const accommodationData2 = originalAccommodationData2;
+    // accommodationData2.value.hotel_geo_node.name = originalAccommodationData2.value.hotel_geo_node.name;
+    // accommodationData2.value.hotel_data_node.rating = originalAccommodationData2.value.hotel_data_node.rating;
 
     /* Send info */
-    const data = { flightData, accommodationData1, accommodationData2, activity };
+    const data = {
+      flightData, accommodationData1, accommodationData2, activity,
+    };
     const cost = { budget, flightCost, accommodationCost };
     res.render('trip', {
       data,
@@ -150,7 +143,9 @@ router.post('/', async (req, res, next) => {
 // }
 
 router.post('/save', (req, res, next) => {
-  let { city, departureDate, returnDate, cost, flightData, accommodationData1, accommodationData2, activity } = req.body;
+  let {
+    city, departureDate, returnDate, cost, flightData, accommodationData1, accommodationData2, activity,
+  } = req.body;
   cost = JSON.parse(cost);
   flightData = JSON.parse(flightData);
   accommodationData1 = JSON.parse(accommodationData1);
