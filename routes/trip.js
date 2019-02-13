@@ -87,15 +87,44 @@ router.post('/', async (req, res, next) => {
     }
     const accommodationData1 = selectedAccommodationInfo[Math.floor(Math.random() * selectedAccommodationInfo.length)];
     console.log('number of hotel', selectedAccommodationInfo.length);
-    console.log(accommodationData1);
+    console.log("accommodation data 1", accommodationData1);
     const getAccommodationInfo = await axios.get(`http://developer.goibibo.com/api/voyager/?app_id=${process.env.APP_IP}&app_key=${process.env.APP_KEY}&method=hotels.get_hotels_data&id_list=[${accommodationData1.accommodationId}]&id_type=_id`);
     const accommodationData2 = Object.getOwnPropertyDescriptor(getAccommodationInfo.data.data, accommodationData1.accommodationId);
-    console.log(accommodationData2);
+    console.log("accommodation data 1", accommodationData2);
 
     console.log('flight: ', flightData.price, 'hotel: ', Math.ceil(accommodationData1.info.value.op / 79.72 * tripDuration));
     const accommodationCost = Math.ceil(accommodationData1.info.value.op / 79.72 * tripDuration);
 
     /* Get Activity info */
+    const latitude = accommodationData2.value.hotel_geo_node.location.lat;
+    console.log('latitude', latitude);
+    const longitude = accommodationData2.value.hotel_geo_node.location.long;
+    console.log('latitude', longitude);
+
+    const amusementParkList = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=amusement_park&key=${process.env.API_ACCOMMODATION_KEY}`);
+    // console.log('amusementParkList', amusementParkList.data.results);
+    const amusementParkListSorted = amusementParkList.data.results.slice(0, 5);
+
+    // console.log('amusementParkListSorted ', amusementParkListSorted);
+    const artGalleryList = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=art_gallery&key=${process.env.API_ACCOMMODATION_KEY}`);
+    // console.log('art_galleryList', artGalleryList.data.results);
+    const artGalleryListSorted = artGalleryList.data.results.slice(0, 5);
+    const churchList = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=church&key=${process.env.API_ACCOMMODATION_KEY}`);
+    // console.log('churchList', churchList.data.results);
+    const churchListSorted = churchList.data.results.slice(0, 5);
+    const parkList = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=park&key=${process.env.API_ACCOMMODATION_KEY}`);
+    // console.log('parkList', parkList.data.results);
+    const parkListSorted = parkList.data.results.slice(0, 5);
+    const nightClubList = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=night_club&key=${process.env.API_ACCOMMODATION_KEY}`);
+    // console.log('night_clubList', nightClubList.data.results);
+    const nightClubListSorted = nightClubList.data.results.slice(0, 5);
+
+    const activitiesList = [...amusementParkListSorted, ...artGalleryListSorted, ...churchListSorted, parkListSorted, ...nightClubListSorted];
+    // console.log('merge activities', activitiesList);
+    const activity = activitiesList[(Math.floor(Math.random() * activitiesList.length))];
+    
+    console.log(activity);
+
 
     /* Send info */
     const data = { flightData, accommodationData1, accommodationData2 };
