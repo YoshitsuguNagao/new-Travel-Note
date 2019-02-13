@@ -3,31 +3,100 @@
 </div>
 <div>
   <h3><%= trip.city %></h3>
-</div>
+  </div>
 <div class="flight-container">
-  <article class="deperture-container">
+  <div class="info-title-container">
+    <div class="info-title"><h3>Flight Info.</h3></div>
+    <div class="info-price"><h3>€ <%= trip.cost.flightCost %></h3></div>
+  </div>
+  <article class="oneway-container">
     <div class="duration-container">
       <div><p>DEPARTURE  Duration:</p></div>
-      <div><p><%= trip.flight.fly_duration%></p></div>
+      <div class="duration-info"><p><%= trip.flight.fly_duration%></p></div>
     </div>
-    <div><p><%= trip.departureDate%></p></div>
-    <% trip.route.forEach(flight => { %>
-    <% }); %>
-    <div>
-    </div>
+    <div class="flight-date"><p><%= trip.departureDate%></p></div>
+    <% let flightFlag = 0; %>
+    <% let convertedTime; %>
+    <% let hours; %>
+    <% let minutes; %>
+    <% for(let i = 0; i < trip.flight.route.length; i++) { %>
+      <%if (flightFlag === 0) { %>
+        <div class="flight-card">
+          <div class="flight-card-info">
+            <% convertedTime = new Date(trip.flight.route[i].dTimeUTC * 1000) %>
+            <% hours = convertedTime.getHours() %>
+            <% minutes = convertedTime.getMinutes() %>
+            <% if (hours < 10) {hours = "0" + hours} %>
+            <% if (minutes < 10) {minutes = "0" + minutes} %>
+            <div class="flight-hour"><p><%= hours %>:<%= minutes %></p></div>
+            <div><p><%= trip.flight.route[i].flyFrom %> <%= trip.flight.route[i].cityFrom %></p></div>
+          </div>
+          <div class="flight-card-info">
+            <% convertedTime = new Date(trip.flight.route[i].aTimeUTC * 1000) %>
+            <% hours = convertedTime.getHours() %>
+            <% minutes = convertedTime.getMinutes() %>
+            <% if (hours < 10) {hours = "0" + hours} %>
+            <% if (minutes < 10) {minutes = "0" + minutes} %>
+            <div class="flight-hour"><p><%= hours %>:<%= minutes %></p></div>
+            <div><p><%= trip.flight.route[i].flyTo %> <%= trip.flight.route[i].cityTo %></p></div>
+          </div>
+        </div>
+      <% }; %>
+      <%if (trip.flight.flyTo === trip.flight.route[i].flyTo) { %>
+        <% flightFlag = 1 %>
+      <% }; %>
+    <% }; %>
   </article>
-  <article class="return-container">
+
+  <article class="oneway-container">
     <div class="duration-container">
       <div><p>RETURN  Duration:</p></div>
-      <div><p><%= trip.flight.return_duration%></p></div>
+      <div class="duration-info"><p><%= trip.flight.return_duration%></p></div>
     </div>
-    <div><p><%= trip.returnDate%></p></div>
-    <div>
-    </div>
+    <div class="flight-date"><p><%= trip.returnDate%></p></div>
+    <% for(let i = 0; i < trip.flight.route.length; i++) { %>
+      <%if (flightFlag === 0) { %>
+        <div class="flight-card">
+          <div class="flight-card-info">
+            <% convertedTime = new Date(trip.flight.route[i].dTimeUTC * 1000) %>
+            <% hours = convertedTime.getHours() %>
+            <% minutes = convertedTime.getMinutes() %>
+            <% if (hours < 10) {hours = "0" + hours} %>
+            <% if (minutes < 10) {minutes = "0" + minutes} %>
+            <div class="flight-hour"><p><%= hours %>:<%= minutes %></p></div>
+            <div><p><%= trip.flight.route[i].flyFrom %> <%= trip.flight.route[i].cityFrom %></p></div>
+          </div>
+          <div class="flight-card-info">
+            <% convertedTime = new Date(trip.flight.route[i].aTimeUTC * 1000) %>
+            <% hours = convertedTime.getHours() %>
+            <% minutes = convertedTime.getMinutes() %>
+            <% if (hours < 10) {hours = "0" + hours} %>
+            <% if (minutes < 10) {minutes = "0" + minutes} %>
+            <div class="flight-hour"><p><%= hours %>:<%= minutes %></p></div>
+            <div><p><%= trip.flight.route[i].flyTo %> <%= trip.flight.route[i].cityTo %></p></div>
+          </div>        </div>
+      <% }; %>
+      <%if (trip.flight.flyTo === trip.flight.route[i].flyTo) { %>
+        <% flightFlag = 0 %>
+      <% }; %>
+    <% }; %>
   </article>
 </div>
 
 <div class="accommodation-container">
+  <div class="info-title-container">
+    <div class="info-title"><h3>Accommodation Info.</h3></div>
+    <div class="info-price"><h3>€ <%= trip.cost.accommodationCost %></h3></div>
+  </div>
+  <div class="accommodation-info-container">
+    <p><%= trip.accommodation.data2.value.hotel_data_node.name %></p>
+    <p><%= trip.accommodation.data2.value.hotel_data_node.loc.full %></p>
+    <p>Type:   <%= trip.accommodation.data2.value.hotel_geo_node.tags.property_type[0] %></p>
+    <% if(trip.accommodation.data2.value.hotel_data_node.contact.phone[0]) { %>
+      <p>TEL: <%= trip.accommodation.data2.value.hotel_data_node.contact.phone[0] %></p>
+    <% } %>
+    <p>Rating: <%= trip.accommodation.data2.value.hotel_data_node.rating %></p>
+  </div>
 </div>
 
 <div class="activity-container">

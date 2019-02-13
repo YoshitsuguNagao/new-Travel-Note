@@ -354,7 +354,67 @@
   text-align: center;
 }
 
+.oneway-container {
+  border: 1px solid darkgray;
+  padding: 0 1rem;
+  border-radius: 0.5rem;
+  margin: 0.5rem;
+}
+
 .duration-container {
   display: flex;
   color: gray;
+  padding: 0.5rem 0;
+}
+
+.duration-container p {
+  margin: 0;
+}
+
+.flight-card-info {
+  display: flex;
+}
+
+.flight-card-info p {
+  margin: 0;
+}
+
+.duration-info {
+  margin-left: 1rem;
+}
+
+.flight-card {
+  border: 1px solid lightgray;
+  border-radius: 0.5rem;
+  padding: 0.3rem;
+  margin: 0.5rem 0;
+}
+
+.flight-hour {
+  margin-right: 1rem;
+}
+
+.flight-date p {
+  margin: 0;
+}
+
+.accommodation-info-container {
+  border: 1px solid darkgray;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  margin: 0.5rem;
+}
+
+.accommodation-info-container p {
+  margin: 0;
+}
+
+.info-title-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+
+.info-title-container h3 {
+  margin: 0;
 }
