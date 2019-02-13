@@ -82,16 +82,16 @@ router.post('/', async (req, res, next) => {
         selectedAccommodationInfo.push({ accommodationId: accommodationIdList[i], info: accommodation });
       }
     }
-    const originalAccommodationData1 = selectedAccommodationInfo[Math.floor(Math.random() * selectedAccommodationInfo.length)];
-    const getAccommodationInfo = await axios.get(`http://developer.goibibo.com/api/voyager/?app_id=${process.env.APP_IP}&app_key=${process.env.APP_KEY}&method=hotels.get_hotels_data&id_list=[${originalAccommodationData1.accommodationId}]&id_type=_id`);
-    const originalAccommodationData2 = Object.getOwnPropertyDescriptor(getAccommodationInfo.data.data, originalAccommodationData1.accommodationId);
-    const accommodationCost = Math.ceil(originalAccommodationData1.info.value.op / 79.72 * tripDuration);
+    const accommodationData1 = selectedAccommodationInfo[Math.floor(Math.random() * selectedAccommodationInfo.length)];
+    const getAccommodationInfo = await axios.get(`http://developer.goibibo.com/api/voyager/?app_id=${process.env.APP_IP}&app_key=${process.env.APP_KEY}&method=hotels.get_hotels_data&id_list=[${accommodationData1.accommodationId}]&id_type=_id`);
+    const accommodationData2 = Object.getOwnPropertyDescriptor(getAccommodationInfo.data.data, accommodationData1.accommodationId);
+    const accommodationCost = Math.ceil(accommodationData1.info.value.op / 79.72 * tripDuration);
     /* Get Activity info */
-    const latitude = originalAccommodationData2.value.hotel_geo_node.location.lat;
-    const longitude = originalAccommodationData2.value.hotel_geo_node.location.long;
+    const latitude = accommodationData2.value.hotel_geo_node.location.lat;
+    const longitude = accommodationData2.value.hotel_geo_node.location.long;
 
     const amusementParkList = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=amusement_park&key=${process.env.API_ACCOMMODATION_KEY}`);
-    // console.log('amusementParkList', amusementParkList.data.results);
+    console.log('amusementParkList', amusementParkList.data.results);
     const amusementParkListSorted = amusementParkList.data.results.slice(0, 5);
 
     // console.log('amusementParkListSorted ', amusementParkListSorted);
@@ -111,11 +111,6 @@ router.post('/', async (req, res, next) => {
     const activitiesList = [...amusementParkListSorted, ...artGalleryListSorted, ...churchListSorted, parkListSorted, ...nightClubListSorted];
     // console.log('merge activities', activitiesList);
     const activity = activitiesList[(Math.floor(Math.random() * activitiesList.length))];
-
-    const accommodationData1 = originalAccommodationData1;
-    const accommodationData2 = originalAccommodationData2;
-    // accommodationData2.value.hotel_geo_node.name = originalAccommodationData2.value.hotel_geo_node.name;
-    // accommodationData2.value.hotel_data_node.rating = originalAccommodationData2.value.hotel_data_node.rating;
 
     /* Send info */
     const data = {
@@ -151,6 +146,7 @@ router.post('/save', (req, res, next) => {
   accommodationData1 = JSON.parse(accommodationData1);
   accommodationData2 = JSON.parse(accommodationData2);
   activity = JSON.parse(activity);
+  console.log(activity);
   Trip.create({
     city,
     departureDate,
