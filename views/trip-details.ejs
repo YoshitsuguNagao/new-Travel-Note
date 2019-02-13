@@ -1,6 +1,37 @@
-<h2>Trip details</h2>
+<div class="trip-detail-title">
+  <h2>Trip details</h2>
+</div>
+<div>
+  <h3><%= trip.city %></h3>
+</div>
+<div class="flight-container">
+  <article class="deperture-container">
+    <div class="duration-container">
+      <div><p>DEPARTURE  Duration:</p></div>
+      <div><p><%= trip.flight.fly_duration%></p></div>
+    </div>
+    <div><p><%= trip.departureDate%></p></div>
+    <% trip.route.forEach(flight => { %>
+    <% }); %>
+    <div>
+    </div>
+  </article>
+  <article class="return-container">
+    <div class="duration-container">
+      <div><p>RETURN  Duration:</p></div>
+      <div><p><%= trip.flight.return_duration%></p></div>
+    </div>
+    <div><p><%= trip.returnDate%></p></div>
+    <div>
+    </div>
+  </article>
+</div>
 
-<h3><%= trip.city %></h3>
+<div class="accommodation-container">
+</div>
+
+<div class="activity-container">
+</div>
 
 <form action="/trip/my-trips/<%= trip.id %>/delete" method="post">
 <button type="submit">Delete</button>

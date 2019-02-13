@@ -1,5 +1,4 @@
 
-
 .auth-container {
   padding: 6px;
   box-shadow: 0 0 100px darkslategrey;
@@ -8,14 +7,15 @@
   color: white;
   text-align: center;
 }
-.box-border{
+
+.box-border {
   border: 1px solid white;
   border-radius: 2rem;
   background-color: rgba(71, 167, 207, 1);
   border: 1px solid white;
-  
 }
-.auth-container-profile{
+
+.auth-container-profile {
   padding: 1rem;
   text-align: center;
   flex-direction: column;
@@ -32,18 +32,18 @@
   width: 40vw;
 }
 
-.logo-img{
+.logo-img {
   width: 30%;
 }
 
-.text-homepage{
+.text-homepage {
   font-size: 1.5rem;
   padding: 8rem 2rem;
   text-align: center;
   color: rgba(71, 167, 207);
 }
 
-.viewPort{
+.viewPort {
   background-color: rgba(71, 167, 207, 0.85);
   height: 100vh;
   display: flex;
@@ -52,7 +52,7 @@
   padding: 1rem;
 }
 
-.auth-container h2{
+.auth-container h2 {
   font-size: 2rem
 }
 
@@ -78,7 +78,7 @@
   margin: 20px auto;
 }
 
-.card input{
+.card input {
   text-align: center;
   color: grey;
 }
@@ -95,7 +95,6 @@
   box-shadow: 0px 8px 14px #333232;
 }
 
-
 .auth-btn-profile button {
   font-size: 1.5rem;
   color: black;
@@ -103,7 +102,6 @@
   border-radius: 2rem;
   background-color: transparent;
   padding: 0 30%;
-
 }
 
 .auth-btn-signup button {
@@ -123,9 +121,9 @@
   font-size: 1.15rem;
 }
 
-.account-message a{
-color: darkslategrey}
-
+.account-message a {
+  color: darkslategrey
+}
 
 .clearfix {
   clear: both;
@@ -133,17 +131,16 @@ color: darkslategrey}
 
 .trip-list {
   list-style: none;
+  padding: 0;
 }
 
-.logout{
+.logout {
   border-top: 1px solid grey;
   border-bottom: 1px solid grey;
   margin-top: 8VH;
-
 }
 
-.logout-btn
- {
+.logout-btn {
    text-decoration: none;
    color: #232323;
    display: flex;
@@ -155,27 +152,26 @@ color: darkslategrey}
    padding: 1rem;
  }
 
-.logout-btn:hover
-{
+.logout-btn:hover {
   color: tomato;
 }
 
 .get-started {
-text-align: center;
-font-size: 2rem;
-color:white;
-padding: 1rem;
-margin-top: 4rem;
+  text-align: center;
+  font-size: 2rem;
+  color:white;
+  padding: 1rem;
+  margin-top: 4rem;
 }
 
-.get-started a{
-color:white;
-border: 2px solid white;
-border-radius: 2rem;
-padding: 0.5rem;
-background-color: white;
-color: #47a7cf;
-box-shadow: 0px 8px 14px #333232;
+.get-started a {
+  color:white;
+  border: 2px solid white;
+  border-radius: 2rem;
+  padding: 0.5rem;
+  background-color: white;
+  color: #47a7cf;
+  box-shadow: 0px 8px 14px #333232;
 }
 
 .splash-container {
@@ -191,7 +187,6 @@ box-shadow: 0px 8px 14px #333232;
   margin: 29.5px;
 }
 
- 
 .dates-from input {
   border: 2px solid #47a7cf;
   background-color: transparent;
@@ -211,29 +206,29 @@ box-shadow: 0px 8px 14px #333232;
   text-align: end;
   font-size: 1rem;
 }
- 
+
 .dates-to label{
  font-size: 1.2rem;
 }
 
-.dates{
-display: flex;
-justify-content: space-around;
-margin-top: 2rem;
+.dates {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2rem;
 }
 
-.budget-imput{
+.budget-imput {
   padding: 3rem 0 0 5rem;
   font-size: 1.2rem;
 }
 
-.budget-imput input{
+.budget-imput input {
   border: 2px solid #47a7cf;
   border-radius: 1rem;
   height: 2rem;
 }
 
- .trip-btn{
+.trip-btn {
   background: transparent url("../images/logo.png") no-repeat center center;
   background-size: contain;
   padding: 75px;
@@ -241,100 +236,125 @@ margin-top: 2rem;
   color: transparent;
  }
 
-.trip-container{
+.trip-container {
   color: #47a7cf;
   font-size: 2rem;
   font-weight: 900;
 }
 
-.flight-info{
+.flight-info {
   height: 27vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
   position: relative;
- }
+}
 
- .flight-image{
+.flight-image {
   background: url("../images/flight.jpg") no-repeat center center;
   background-size: cover;
   height: 100%;
   opacity: 0.5;
- }
+}
 
- .city-name{
+.city-name {
   position: absolute;
   text-shadow: 3px 2px 3px #312e2e;
   text-align: center;
   width: 100%;
 }
 
-
-
-.accommodation-info{
+.accommodation-info {
   height: 27vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
   position: relative;
- }
+}
 
-.accommodation-image{
+.accommodation-image {
   background: url("../images/hotel.jpg") no-repeat center center;
   background-size: cover;
   height: 100%;
   opacity: 0.5;
- }
+}
 
-.accommodation-name{
+.accommodation-name {
   position: absolute;
   text-shadow: 3px 2px 3px #312e2e;
   width: 100%;
 }
 
-
-
-.activity-info{
+.activity-info {
   height: 27vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
   position: relative;
+}
 
- }
-
-.activity-image{
+.activity-image {
   background: url("../images/activity.jpg") no-repeat center center;
   background-size: cover;
   height: 100%;
   opacity: 0.5;
- }
+}
 
-.activity-name{
+.activity-name {
    position: absolute;
    text-shadow: 3px 2px 3px #312e2e;
    width: 100%;
- }
+}
 
- .tripView-btns{
+.tripView-btns {
   display: flex;
   justify-content: space-around;
   margin-top: 10px;
-  
- }
+}
 
- .tripView-btn{
+.tripView-btn {
   background-color: #47a7cf;
   border-radius: 1rem;
   width: 7rem;
   text-align: center;
 }
+
 .tripView-btn-text{
-color: white;
-font-size: 1.5rem;
+  color: white;
+  font-size: 1.5rem;
 }
 
+.my-trips-title {
+  text-align: center;
+}
 
+.one-trip-container {
+  display: flex;
+  border-bottom: 1px solid darkgray;
+  padding: 0.3rem 0;
+}
+
+.city-name-container {
+  width: 35vw;
+  margin-left: 2rem;
+}
+
+.trip-date-container {
+  width: 100%;
+}
+
+.one-trip-container p {
+  margin: 0;
+}
+
+.trip-detail-title {
+  text-align: center;
+}
+
+.duration-container {
+  display: flex;
+  color: gray;
+}
