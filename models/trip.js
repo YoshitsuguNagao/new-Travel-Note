@@ -49,14 +49,68 @@ const tripSchema = new Schema({
   accommodation: {
     data1: {
       accommodationId: String,
+      info: {
+        value: {
+          pah: Number,
+          sf: String,
+          ho: String,
+          ibp: String,
+          fc: Number,
+          rowid: String,
+          fcdt: String,
+          egc: Number,
+          mp_wt: Number,
+          op: Number,
+          op_wt: Number,
+          fc_days: Number,
+          spf: Number,
+          mp: Number,
+        },
+      },
     },
     data2: {
       value: {
         hotel_geo_node: {
           name: String,
+          tags: {
+            property_type: [String],
+          },
+          location: {
+            lat: Number,
+            long: Number,
+          },
+          _id: Number,
         },
         hotel_data_node: {
           rating: Number,
+          name: String,
+          contact: {
+            phone: [String],
+          },
+          desc: {
+            default: String,
+          },
+          _id: Number,
+          loc: {
+            city: String,
+            full: String,
+            city_cids: {
+              voy: Number,
+              exp: String,
+            },
+            pin: String,
+            country: String,
+            long: Number,
+            cnt_code: String,
+            lat: Number,
+            nhood: [
+              {
+                _id: Number,
+                t: Number,
+                n: String,
+              },
+            ],
+          },
         },
       },
     },
