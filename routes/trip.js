@@ -127,7 +127,7 @@ router.post('/', async (req, res, next) => {
 
 
     /* Send info */
-    const data = { flightData, accommodationData1, accommodationData2 };
+    const data = { flightData, accommodationData1, accommodationData2, activity };
     const cost = { budget, flightCost, accommodationCost };
     res.render('trip', {
       data,
@@ -150,11 +150,12 @@ router.post('/', async (req, res, next) => {
 // }
 
 router.post('/save', (req, res, next) => {
-  let { city, departureDate, returnDate, cost, flightData, accommodationData1, accommodationData2 } = req.body;
+  let { city, departureDate, returnDate, cost, flightData, accommodationData1, accommodationData2, activity } = req.body;
   cost = JSON.parse(cost);
   flightData = JSON.parse(flightData);
   accommodationData1 = JSON.parse(accommodationData1);
   accommodationData2 = JSON.parse(accommodationData2);
+  activity = JSON.parse(activity);
   Trip.create({
     city,
     departureDate,
@@ -165,6 +166,7 @@ router.post('/save', (req, res, next) => {
       data1: accommodationData1,
       data2: accommodationData2,
     },
+    activity,
     cost,
   })
     .then(() => {
