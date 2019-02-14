@@ -1,23 +1,140 @@
 <div class="trip-container">
-  <div class="flight-info">
-    <div class="flight-image"></div>
-    <div class="city-name">
-      <p><%= data.flightData.cityTo %></p>
+
+  <div class="flight-info tab">
+    <input id="tab-one" type="checkbox" name="tabs">
+      <label for="tab-one" class="flight-image tab-title">
+      <div class="bkRGBA">
+        <div class="title-card">
+        <p><%= data.flightData.cityTo %></p>
+        </div>
+      </div>
+    </label>
+    <div class="tab-content">
+    <div class="flight-container">
+    <div class="info-title-container">
+      <div class="info-title"><h3>Flight Info.</h3></div>
+      <div class="info-price"><h3>€ <%= cost.flightCost %></h3></div>
+    </div>
+    <article class="oneway-container">
+      <div class="duration-container">
+        <div><p>DEPARTURE  Duration:</p></div>
+        <div class="duration-info"><p><%= data.flightData.fly_duration%></p></div>
+      </div>
+      <div class="flight-date"><p><%= data.departureDate%></p></div>
+      <% let flightFlag = 0; %>
+      <% let convertedTime; %>
+      <% let hours; %>
+      <% let minutes; %>
+      <% for(let i = 0; i < data.flightData.route.length; i++) { %>
+        <%if (flightFlag === 0) { %>
+          <div class="flight-card">
+            <div class="flight-card-info">
+              <% convertedTime = new Date(data.flightData.route[i].dTimeUTC * 1000) %>
+              <% hours = convertedTime.getHours() %>
+              <% minutes = convertedTime.getMinutes() %>
+              <% if (hours < 10) {hours = "0" + hours} %>
+              <% if (minutes < 10) {minutes = "0" + minutes} %>
+              <div class="flight-hour"><p><%= hours %>:<%= minutes %></p></div>
+              <div><p><%= data.flightData.route[i].flyFrom %> <%= data.flightData.route[i].cityFrom %></p></div>
+            </div>
+            <div class="flight-card-info">
+              <% convertedTime = new Date(data.flightData.route[i].aTimeUTC * 1000) %>
+              <% hours = convertedTime.getHours() %>
+              <% minutes = convertedTime.getMinutes() %>
+              <% if (hours < 10) {hours = "0" + hours} %>
+              <% if (minutes < 10) {minutes = "0" + minutes} %>
+              <div class="flight-hour"><p><%= hours %>:<%= minutes %></p></div>
+              <div><p><%= data.flightData.route[i].flyTo %> <%= data.flightData.route[i].cityTo %></p></div>
+            </div>
+          </div>
+        <% }; %>
+        <%if (data.flightData.flyTo === data.flightData.route[i].flyTo) { %>
+          <% flightFlag = 1 %>
+        <% }; %>
+      <% }; %>
+    </article>
+
+    <article class="oneway-container">
+      <div class="duration-container">
+        <div><p>RETURN  Duration:</p></div>
+        <div class="duration-info"><p><%= data.flightData.return_duration%></p></div>
+      </div>
+      <div class="flight-date"><p><%= data.returnDate%></p></div>
+      <% for(let i = 0; i < data.flightData.route.length; i++) { %>
+        <%if (flightFlag === 0) { %>
+          <div class="flight-card">
+            <div class="flight-card-info">
+              <% convertedTime = new Date(data.flightData.route[i].dTimeUTC * 1000) %>
+              <% hours = convertedTime.getHours() %>
+              <% minutes = convertedTime.getMinutes() %>
+              <% if (hours < 10) {hours = "0" + hours} %>
+              <% if (minutes < 10) {minutes = "0" + minutes} %>
+              <div class="flight-hour"><p><%= hours %>:<%= minutes %></p></div>
+              <div><p><%= data.flightData.route[i].flyFrom %> <%= data.flightData.route[i].cityFrom %></p></div>
+            </div>
+            <div class="flight-card-info">
+              <% convertedTime = new Date(data.flightData.route[i].aTimeUTC * 1000) %>
+              <% hours = convertedTime.getHours() %>
+              <% minutes = convertedTime.getMinutes() %>
+              <% if (hours < 10) {hours = "0" + hours} %>
+              <% if (minutes < 10) {minutes = "0" + minutes} %>
+              <div class="flight-hour"><p><%= hours %>:<%= minutes %></p></div>
+              <div><p><%= data.flightData.route[i].flyTo %> <%= data.flightData.route[i].cityTo %></p></div>
+            </div>        </div>
+        <% }; %>
+        <%if (data.flightData.flyTo === data.flightData.route[i].flyTo) { %>
+          <% flightFlag = 0 %>
+        <% }; %>
+      <% }; %>
+    </article>
+  </div>
+  </div>
+  </div>
+
+  <div class="accommodation-info tab">
+    <input id="tab-two" type="checkbox" name="tabs">
+    <label for="tab-two" class="accommodation-image tab-title">
+      <div class="bkRGBA">
+      <div class="title-card">
+        <p><%= data.accommodationData2.value.hotel_data_node.name %></p>
+      </div>
+      </div>
+    </label>
+    <div class="tab-content">
+    <div class="accommodation-container">
+      <div class="info-title-container">
+        <div class="info-title"><h3>Accommodation Info.</h3></div>
+        <div class="info-price"><h3>€ <%= cost.accommodationCost %></h3></div>
+      </div>
+      <div class="accommodation-info-container">
+        <p><%= data.accommodationData2.value.hotel_data_node.name %></p>
+        <p><%= data.accommodationData2.value.hotel_data_node.loc.full %></p>
+        <p>Type:   <%= data.accommodationData2.value.hotel_geo_node.tags.property_type[0] %></p>
+        <% if(data.accommodationData2.value.hotel_data_node.contact.phone[0]) { %>
+          <p>TEL: <%= data.accommodationData2.value.hotel_data_node.contact.phone[0] %></p>
+        <% } %>
+        <p>Rating: <%= data.accommodationData2.value.hotel_data_node.rating %></p>
+      </div>
+    </div>
     </div>
   </div>
-  <div class="accommodation-info">
-    <div class="accommodation-image"></div>
-    <div class="accommodation-name">
-      <p><%= data.accommodationData2.value.hotel_data_node.name %></p>
+
+  <div class="activity-info tab">
+    <input id="tab-three" type="checkbox" name="tabs">
+    <label for="tab-three" class="activity-image tab-title">
+      <div class="bkRGBA">
+      <div class="title-card">
+        <p>Activity</p>
+        </div>
+      </div>
+    </label>
+    <div class="tab-content">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, architecto, explicabo perferendis nostrum, maxime impedit atque odit sunt pariatur illo obcaecati soluta molestias iure facere dolorum adipisci eum? Saepe, itaque.</p>
     </div>
   </div>
-  <div class="activity-info">
-    <div class="activity-image"></div>
-    <div class="activity-name">
-     <p>Activity</p>
-    </div>
+
   </div>
- <div class="tripView-btns">
+  <div class="tripView-btns">
     <div class="tripView-btn">
       <form action="/trip" method="POST">
         <input type="hidden" name="departureDate" value="<%= departureDate%>">
@@ -41,7 +158,6 @@
       </form>
     </div>
   </div>
-</div>
 
 
 
