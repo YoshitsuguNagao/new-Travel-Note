@@ -113,23 +113,18 @@ router.post('/', async (req, res, next) => {
     // console.log('activity', activity);
     // console.log('activity name', activity.name);
     const typeArr = activity.types;
-    console.log('array with types', typeArr);
+    const activitySentence;
     for (let i = 0; i < typeArr.length; i++) {
       if (typeArr[i] === 'curch') {
-        const churchSentence = `Visit the ${activity.name}`;
-        console.log(churchSentence);
+        activitySentence = `Visit the ${activity.name}`;
       } else if (typeArr[i] === 'amusement_park') {
-        const AmusementParkSentence = `Visit the ${activity.name}`;
-        console.log(AmusementParkSentence);
+        activitySentence = `Visit the ${activity.name}`;
       } else if (typeArr[i] === 'park') {
-        const parkSentence = `Walk around ${activity.name}`;
-        console.log(parkSentence);
+        activitySentence = `Walk around ${activity.name}`;
       } else if (typeArr[i] === 'night_club') {
-        const nightClubSentence = `Have couple of drinks at ${activity.name}`;
-        console.log(nightClubSentence);
+        activitySentence = `Have couple of drinks at ${activity.name}`;
       } else if (typeArr[i] === 'art_gallery') {
-        const artGallerySentence = `See some art at ${activity.name}`;
-        console.log(artGallerySentence);
+        activitySentence = `See some art at ${activity.name}`;
       }
     }
 
@@ -144,6 +139,7 @@ router.post('/', async (req, res, next) => {
       returnDate,
       budget,
       cost,
+      activitySentence,
     });
   } catch (error) {
     next(error);
