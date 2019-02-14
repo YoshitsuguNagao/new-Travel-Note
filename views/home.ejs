@@ -9,6 +9,17 @@
       <input type="date" name="returnDate" min=<%= currentDate %> required>
     </div>
   </div>
+  <div class="departure-city-imput">
+    <label for="departure-city">From</label>
+    <select name="departureCity">
+      <option selected value="0">Choose a city</option>
+      <option  value="BCN">Barcelona</option>
+      <option  value="CDG">Paris</option>
+      <option  value="HND">Tokyo</option>
+      <option  value="MAD">Madrid</option>
+      <option  value="TXL">Berlin</option>
+    </select>
+  </div>
   <div class="budget-imput">
     <label for="budget">Budget</label>
     <input type="number" name="budget" min="200" required>

@@ -27,7 +27,10 @@ router.get('/', (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    const { departureDate, returnDate, budget } = req.body;
+    const {
+      departureDate, returnDate, budget, departureCity,
+    } = req.body;
+    console.log('departure city', departureCity);
     const tripDuration = getDuration(departureDate, returnDate);
     const departureDateForFlight = dateFormatChanger(departureDate);
     const returnDateForFlight = dateFormatChanger(returnDate);
@@ -37,7 +40,7 @@ router.post('/', async (req, res, next) => {
 
     /* Get flight info */
     const flightBudget = budget / 2;
-    const getFlightInfo = await axios.get(`https://api.skypicker.com/flights?fly_from=BCN&date_from=${departureDateForFlight}&date_to=${departureDateForFlight}&return_from=${returnDateForFlight}&return_to=${returnDateForFlight}&curr=EUR&price_to=${flightBudget}&one_for_city=1&max_stopovers=1`);
+    const getFlightInfo = await axios.get(`https://api.skypicker.com/flights?fly_from=${departureCity}&date_from=${departureDateForFlight}&date_to=${departureDateForFlight}&return_from=${returnDateForFlight}&return_to=${returnDateForFlight}&curr=EUR&price_to=${flightBudget}&one_for_city=1&max_stopovers=1`);
     const selectedFlightInfo = [];
     const selectedAccommodationInfo = [];
     getFlightInfo.data.data.forEach((oneFlightData) => {
@@ -86,6 +89,9 @@ router.post('/', async (req, res, next) => {
         selectedAccommodationInfo.push({ accommodationId: accommodationIdList[i], info: accommodation });
       }
     }
+    if (selectedAccommodationInfo.length < 1) {
+      return res.redirect('/home');
+    }
     const accommodationData1 = selectedAccommodationInfo[Math.floor(Math.random() * selectedAccommodationInfo.length)];
     const getAccommodationInfo = await axios.get(`http://developer.goibibo.com/api/voyager/?app_id=${process.env.APP_IP}&app_key=${process.env.APP_KEY}&method=hotels.get_hotels_data&id_list=[${accommodationData1.accommodationId}]&id_type=_id`);
     const accommodationData2 = Object.getOwnPropertyDescriptor(getAccommodationInfo.data.data, accommodationData1.accommodationId);
@@ -116,7 +122,7 @@ router.post('/', async (req, res, next) => {
     const activity = activitiesList[(Math.floor(Math.random() * activitiesList.length))];
     console.log('activity', activity);
     // console.log('activity name', activity.name);
-    console.log(activitiesList.length)
+    console.log(activitiesList.length);
     const typeArr = activity.types;
     let activitySentence = 'Go the infomation center!';
     if (typeArr.length > 0) {
@@ -170,7 +176,6 @@ router.post('/save', (req, res, next) => {
   accommodationData1 = JSON.parse(accommodationData1);
   accommodationData2 = JSON.parse(accommodationData2);
   activity = JSON.parse(activity);
-  console.log(activity);
   Trip.create({
     city,
     departureDate,
