@@ -47,7 +47,7 @@ app.use(session({
 }));
 
 app.use(flash());
-app.use(notifications);
+// app.use(notifications);
 
 // Makes the currentUser available in every page
 // note1: currentUser needs to match whatever you use in login/signup/logout routes

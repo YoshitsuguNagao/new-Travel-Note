@@ -52,7 +52,10 @@ router.post('/', async (req, res, next) => {
     });
     // console.log("number of flight",selectedFlightInfo.length)
     if (selectedFlightInfo.length < 1) {
-      return res.redirect('/home');
+      const currentDate = new Date().toISOString().split('T')[0];
+      req.flash('info', 'There was no avarable flight... Search your different trip!');
+      res.redirect('/home');
+      return;
     }
     const flightData = selectedFlightInfo[Math.floor(Math.random() * selectedFlightInfo.length)];
     const flightCost = flightData.price;
@@ -90,8 +93,13 @@ router.post('/', async (req, res, next) => {
       }
     }
     if (selectedAccommodationInfo.length < 1) {
-      return res.redirect('/home');
+      const currentDate = new Date().toISOString().split('T')[0];
+      req.flash('info', 'ddThere was no avarable flight... Search your different trip!');
+      res.redirect('/home');
+      return;
+      // return res.redirect('/home');
     }
+    console.log("hahahahahaha")
     const accommodationData1 = selectedAccommodationInfo[Math.floor(Math.random() * selectedAccommodationInfo.length)];
     const getAccommodationInfo = await axios.get(`http://developer.goibibo.com/api/voyager/?app_id=${process.env.APP_IP}&app_key=${process.env.APP_KEY}&method=hotels.get_hotels_data&id_list=[${accommodationData1.accommodationId}]&id_type=_id`);
     const accommodationData2 = Object.getOwnPropertyDescriptor(getAccommodationInfo.data.data, accommodationData1.accommodationId);

@@ -11,7 +11,7 @@
   </div>
   <div class="departure-city-imput">
     <label for="departure-city">From</label>
-    <select name="departureCity">
+    <select name="departureCity" required>
       <option selected value="0">Choose a city</option>
       <option  value="BCN">Barcelona</option>
       <option  value="CDG">Paris</option>
@@ -27,6 +27,9 @@
   <div class="logo">
     <button class="trip-btn" type="submit">search trip</button>
   </div>
+  <% if (errorMessage) { %>
+  <div class="error-message"><%= errorMessage %></div>
+  <% } %>
   <div class="text-homepage">
     <p>Press the logo and get ready for the adventure</p>
   </div>
