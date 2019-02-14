@@ -19,13 +19,14 @@ router.post('/signup', (req, res, next) => {
   const hashPass = bcrypt.hashSync(password, salt);
 
   if (username === '' || password === '') {
-    // req.flash('error', 'empty fields by flash');
-    // res.redirect('auth/signup');
-    res.render('auth/signup', {
-      errorMessage: 'Indicate a username and a password to sign up',
-    });
-    return;
-  }
+    req.flash('error', 'empty fields by flash');
+    res.redirect('auth/signup');
+    console.log('flash?')
+    // res.render('auth/signup', {
+    //   errorMessage: 'Indicate a username and a password to sign up',
+    // });
+    // return;
+  } else {
   User.findOne({ username })
     .then((user) => {
       if (user) {
@@ -47,6 +48,7 @@ router.post('/signup', (req, res, next) => {
           });
       }
     });
+  }
 });
 
 router.get('/login', (req, res, next) => {
