@@ -99,9 +99,24 @@
   </div>
 </div>
 
-<div class="activity-container">
+<div class="Activity-container">
+  <div class="info-title-container">
+    <div class="info-title"><h3>Activity Info.</h3></div>
+  </div>
+  <div class="accommodation-info-container">
+      <p><%= trip.activity.name %></p>
+      <p><%= trip.activity.vicinity %></p>
+      <p>Rating: <%= trip.activity.rating %></p>
+    </div>
 </div>
 
-<form action="/trip/my-trips/<%= trip.id %>/delete" method="post">
-<button type="submit">Delete</button>
-</form>
+
+<div class="details-btn">
+  <form action="/trip/my-trips/<%= trip.id %>/delete" method="post">
+    <button type="submit"><img src="/images/delete.png" alt="delete button"></button>
+  </form>
+
+  <div class="back-btn">
+    <a href="/trip/my-trips"><img src="/images/back.png" alt="back button"></a>
+  </div>
+</div>
