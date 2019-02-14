@@ -93,7 +93,6 @@ router.post('/', async (req, res, next) => {
     const amusementParkList = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=amusement_park&key=${process.env.API_ACCOMMODATION_KEY}`);
     console.log('amusementParkList', amusementParkList.data.results);
     const amusementParkListSorted = amusementParkList.data.results.slice(0, 5);
-
     // console.log('amusementParkListSorted ', amusementParkListSorted);
     const artGalleryList = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=art_gallery&key=${process.env.API_ACCOMMODATION_KEY}`);
     // console.log('art_galleryList', artGalleryList.data.results);
@@ -111,6 +110,28 @@ router.post('/', async (req, res, next) => {
     const activitiesList = [...amusementParkListSorted, ...artGalleryListSorted, ...churchListSorted, parkListSorted, ...nightClubListSorted];
     // console.log('merge activities', activitiesList);
     const activity = activitiesList[(Math.floor(Math.random() * activitiesList.length))];
+    // console.log('activity', activity);
+    // console.log('activity name', activity.name);
+    const typeArr = activity.types;
+    console.log('array with types', typeArr);
+    for (let i = 0; i < typeArr.length; i++) {
+      if (typeArr[i] === 'curch') {
+        const churchSentence = `Visit the ${activity.name}`;
+        console.log(churchSentence);
+      } else if (typeArr[i] === 'amusement_park') {
+        const AmusementParkSentence = `Visit the ${activity.name}`;
+        console.log(AmusementParkSentence);
+      } else if (typeArr[i] === 'park') {
+        const parkSentence = `Walk around ${activity.name}`;
+        console.log(parkSentence);
+      } else if (typeArr[i] === 'night_club') {
+        const nightClubSentence = `Have couple of drinks at ${activity.name}`;
+        console.log(nightClubSentence);
+      } else if (typeArr[i] === 'art_gallery') {
+        const artGallerySentence = `See some art at ${activity.name}`;
+        console.log(artGallerySentence);
+      }
+    }
 
     /* Send info */
     const data = {
