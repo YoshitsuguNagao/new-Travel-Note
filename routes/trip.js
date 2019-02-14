@@ -113,7 +113,7 @@ router.post('/', async (req, res, next) => {
     // console.log('activity', activity);
     // console.log('activity name', activity.name);
     const typeArr = activity.types;
-    const activitySentence;
+    let activitySentence;
     for (let i = 0; i < typeArr.length; i++) {
       if (typeArr[i] === 'curch') {
         activitySentence = `Visit the ${activity.name}`;
