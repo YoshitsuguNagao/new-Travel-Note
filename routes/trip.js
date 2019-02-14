@@ -89,6 +89,9 @@ router.post('/', async (req, res, next) => {
         selectedAccommodationInfo.push({ accommodationId: accommodationIdList[i], info: accommodation });
       }
     }
+    if (selectedAccommodationInfo.length < 1) {
+      return res.redirect('/home');
+    }
     const accommodationData1 = selectedAccommodationInfo[Math.floor(Math.random() * selectedAccommodationInfo.length)];
     const getAccommodationInfo = await axios.get(`http://developer.goibibo.com/api/voyager/?app_id=${process.env.APP_IP}&app_key=${process.env.APP_KEY}&method=hotels.get_hotels_data&id_list=[${accommodationData1.accommodationId}]&id_type=_id`);
     const accommodationData2 = Object.getOwnPropertyDescriptor(getAccommodationInfo.data.data, accommodationData1.accommodationId);
