@@ -110,8 +110,10 @@
         <p><%= data.accommodationData2.value.hotel_data_node.name %></p>
         <p><%= data.accommodationData2.value.hotel_data_node.loc.full %></p>
         <p>Type:   <%= data.accommodationData2.value.hotel_geo_node.tags.property_type[0] %></p>
+        <% if(data.accommodationData2.value.hotel_data_node.contact.phone) { %>
         <% if(data.accommodationData2.value.hotel_data_node.contact.phone[0]) { %>
           <p>TEL: <%= data.accommodationData2.value.hotel_data_node.contact.phone[0] %></p>
+        <% } %>
         <% } %>
         <p>Rating: <%= data.accommodationData2.value.hotel_data_node.rating %></p>
       </div>

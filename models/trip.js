@@ -119,7 +119,7 @@ const tripSchema = new Schema({
   },
   activity: {
     name: String,
-    type: [String],
+    types: [String],
     vicinity: String,
     rating: Number,
   },
