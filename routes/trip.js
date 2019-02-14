@@ -28,7 +28,10 @@ router.get('/', (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
   try {
-    const { departureDate, returnDate, budget } = req.body;
+    const {
+      departureDate, returnDate, budget, departureCity,
+    } = req.body;
+    console.log('departure city', departureCity);
     const tripDuration = getDuration(departureDate, returnDate);
     const departureDateForFlight = dateFormatChanger(departureDate);
     const returnDateForFlight = dateFormatChanger(returnDate);
@@ -38,7 +41,7 @@ router.post('/', async (req, res, next) => {
 
     /* Get flight info */
     const flightBudget = budget / 2;
-    const getFlightInfo = await axios.get(`https://api.skypicker.com/flights?fly_from=BCN&date_from=${departureDateForFlight}&date_to=${departureDateForFlight}&return_from=${returnDateForFlight}&return_to=${returnDateForFlight}&curr=EUR&price_to=${flightBudget}&one_for_city=1&max_stopovers=1`);
+    const getFlightInfo = await axios.get(`https://api.skypicker.com/flights?fly_from=${departureCity}&date_from=${departureDateForFlight}&date_to=${departureDateForFlight}&return_from=${returnDateForFlight}&return_to=${returnDateForFlight}&curr=EUR&price_to=${flightBudget}&one_for_city=1&max_stopovers=1`);
     const selectedFlightInfo = [];
     const selectedAccommodationInfo = [];
     getFlightInfo.data.data.forEach((oneFlightData) => {
@@ -163,7 +166,6 @@ router.post('/save', (req, res, next) => {
   accommodationData1 = JSON.parse(accommodationData1);
   accommodationData2 = JSON.parse(accommodationData2);
   activity = JSON.parse(activity);
-  console.log(activity);
   Trip.create({
     city,
     departureDate,
