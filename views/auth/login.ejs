@@ -1,26 +1,28 @@
 <div class="viewPort">
   <div class="auth-container">
-    <form action="/auth/login" method="POST" id="form">
-    <div><h2>Travel Note</h2></div>
-    <div><img class="logo-img" src="/images/logo2.png" alt=""></div>
-      <div class="card">
-        <input type="text" name="username" placeholder="User Name">
+    <div class="box-border">
+      <form action="/auth/login" method="POST" id="form">
+      <div><h2>Travel Note</h2></div>
+      <div><img class="logo-img" src="/images/logo2.png" alt=""></div>
+        <div class="card">
+          <input type="text" name="username" placeholder="User Name">
+        </div>
+        <div class="card">
+          <input type="password" name="password" placeholder="Password">
+        </div>
+        <% if (errorMessage) { %>
+          <div class="error-message"><%= errorMessage %></div>
+        <% } %>
+        <div class="auth-btn">
+          <button>Sign in</button>
+        </div>
+        <div class="clearfix"></div>
+        <div>
+          <p class="account-message">
+            Don't have an account? <a href="/auth/signup">Sign up</a>
+          </p>
+        </div>
+      </form>
       </div>
-      <div class="card">
-        <input type="password" name="password" placeholder="Password">
-      </div>
-      <% if (errorMessage) { %>
-        <div class="error-message"><%= errorMessage %></div>
-      <% } %>
-      <div class="auth-btn">
-        <button>Sign in</button>
-      </div>
-      <div class="clearfix"></div>
-      <div>
-        <p class="account-message">
-          Don't have an account? <a href="/auth/signup">Sign up</a>
-        </p>
-      </div>
-    </form>
   </div>
 </div>
