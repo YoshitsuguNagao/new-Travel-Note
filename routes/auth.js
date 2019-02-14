@@ -20,7 +20,7 @@ router.post('/signup', (req, res, next) => {
 
   if (username === '' || password === '') {
     // req.flash('error', 'empty fields by flash');
-    // res.redirect('/signup');
+    // res.redirect('auth/signup');
     res.render('auth/signup', {
       errorMessage: 'Indicate a username and a password to sign up',
     });
