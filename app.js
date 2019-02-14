@@ -8,7 +8,11 @@ const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+const flash = require('connect-flash');
+
 const protectedRoute = require('./middlwwares/protectedRoute');
+const notifications = require('./middlwwares/notifications');
+
 
 //  Change the title of database
 mongoose
@@ -41,6 +45,9 @@ app.use(session({
     maxAge: 24 * 60 * 60 * 1000,
   },
 }));
+
+app.use(flash());
+app.use(notifications);
 
 // Makes the currentUser available in every page
 // note1: currentUser needs to match whatever you use in login/signup/logout routes

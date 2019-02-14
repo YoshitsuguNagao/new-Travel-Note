@@ -19,6 +19,8 @@ router.post('/signup', (req, res, next) => {
   const hashPass = bcrypt.hashSync(password, salt);
 
   if (username === '' || password === '') {
+    // req.flash('error', 'empty fields by flash');
+    // res.redirect('/signup');
     res.render('auth/signup', {
       errorMessage: 'Indicate a username and a password to sign up',
     });
@@ -27,6 +29,7 @@ router.post('/signup', (req, res, next) => {
   User.findOne({ username })
     .then((user) => {
       if (user) {
+        // req.flash('error', 'User exists!');
         res.render('auth/signup', {
           errorMessage: 'User exists',
         });
