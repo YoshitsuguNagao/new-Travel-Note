@@ -25,7 +25,6 @@ router.get('/', (req, res, next) => {
   //   .catch(next);
 });
 
-
 router.post('/', async (req, res, next) => {
   try {
     const { departureDate, returnDate, budget } = req.body;
@@ -48,9 +47,13 @@ router.post('/', async (req, res, next) => {
         selectedFlightInfo.push(oneFlightData);
       }
     });
+    // console.log("number of flight",selectedFlightInfo.length)
+    if (selectedFlightInfo.length < 1) {
+      return res.redirect('/home');
+    }
     const flightData = selectedFlightInfo[Math.floor(Math.random() * selectedFlightInfo.length)];
     const flightCost = flightData.price;
-
+    console.log('cityTo:', flightData.cityTo);
     /* Get Accommodation info */
     const accommodationBudgetEur = budget - flightCost;
     const cityName = flightData.cityTo;
@@ -76,6 +79,7 @@ router.post('/', async (req, res, next) => {
     const getAccommodationList = await axios.get(`http://developer.goibibo.com/api/cyclone/?app_id=${process.env.APP_IP}&app_key=${process.env.APP_KEY}&city_id=${cityInfo.cityId}&check_in=${departureDateForAccommodation}&check_out=${returnDateForAccommodation}`);
     const accommodationBudgetInr = 79.72 * accommodationBudgetEur / tripDuration;
     const accommodationIdList = Object.keys(getAccommodationList.data.data);
+
     for (let i = 0; i < accommodationIdList.length; i++) {
       const accommodation = Object.getOwnPropertyDescriptor(getAccommodationList.data.data, accommodationIdList[i]);
       if (accommodation.value.op < accommodationBudgetInr) {
@@ -91,7 +95,7 @@ router.post('/', async (req, res, next) => {
     const longitude = accommodationData2.value.hotel_geo_node.location.long;
 
     const amusementParkList = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=amusement_park&key=${process.env.API_ACCOMMODATION_KEY}`);
-    console.log('amusementParkList', amusementParkList.data.results);
+    // console.log('amusementParkList', amusementParkList.data.results);
     const amusementParkListSorted = amusementParkList.data.results.slice(0, 5);
     // console.log('amusementParkListSorted ', amusementParkListSorted);
     const artGalleryList = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=art_gallery&key=${process.env.API_ACCOMMODATION_KEY}`);
@@ -110,21 +114,24 @@ router.post('/', async (req, res, next) => {
     const activitiesList = [...amusementParkListSorted, ...artGalleryListSorted, ...churchListSorted, parkListSorted, ...nightClubListSorted];
     // console.log('merge activities', activitiesList);
     const activity = activitiesList[(Math.floor(Math.random() * activitiesList.length))];
-    // console.log('activity', activity);
+    console.log('activity', activity);
     // console.log('activity name', activity.name);
+    console.log(activitiesList.length)
     const typeArr = activity.types;
-    let activitySentence;
-    for (let i = 0; i < typeArr.length; i++) {
-      if (typeArr[i] === 'curch') {
-        activitySentence = `Visit the ${activity.name}`;
-      } else if (typeArr[i] === 'amusement_park') {
-        activitySentence = `Visit the ${activity.name}`;
-      } else if (typeArr[i] === 'park') {
-        activitySentence = `Walk around ${activity.name}`;
-      } else if (typeArr[i] === 'night_club') {
-        activitySentence = `Have couple of drinks at ${activity.name}`;
-      } else if (typeArr[i] === 'art_gallery') {
-        activitySentence = `See some art at ${activity.name}`;
+    let activitySentence = 'Go the infomation center!';
+    if (typeArr.length > 0) {
+      for (let i = 0; i < typeArr.length; i++) {
+        if (typeArr[i] === 'curch') {
+          activitySentence = `Visit the ${activity.name}`;
+        } else if (typeArr[i] === 'amusement_park') {
+          activitySentence = `Visit the ${activity.name}`;
+        } else if (typeArr[i] === 'park') {
+          activitySentence = `Walk around ${activity.name}`;
+        } else if (typeArr[i] === 'night_club') {
+          activitySentence = `Have couple of drinks at ${activity.name}`;
+        } else if (typeArr[i] === 'art_gallery') {
+          activitySentence = `See some art at ${activity.name}`;
+        }
       }
     }
 
@@ -182,7 +189,6 @@ router.post('/save', (req, res, next) => {
     })
     .catch(next);
 });
-
 
 router.get('/my-trips', (req, res, next) => {
   const { _id } = req.session.currentUser;

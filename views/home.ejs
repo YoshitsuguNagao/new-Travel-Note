@@ -2,11 +2,11 @@
   <div class="dates">
     <div class="dates-from">
       <label for="departureDate">From</label></br>
-      <input type="date" min="2019-02-15" required pattern="^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$" name="departureDate" required>
+      <input type="date" min=<%= currentDate %> required pattern="^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$" name="departureDate" required>
     </div>
     <div class="dates-to">
       <label for="returnDate">To</label></br>
-      <input type="date" name="returnDate" min="2019-02-15" required>
+      <input type="date" name="returnDate" min=<%= currentDate %> required>
     </div>
   </div>
   <div class="budget-imput">

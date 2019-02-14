@@ -5,8 +5,11 @@ const router = express.Router();
 /* GET home page. */
 router.get('/', (req, res, next) => {
   // console.log(req.session.currentUser);
-
-  res.render('home', { title: 'Travel Note' });
+  const currentDate = new Date().toISOString().split('T')[0]
+  res.render('home', {
+    title: 'Travel Note',
+    currentDate,
+  });
 });
 
 
