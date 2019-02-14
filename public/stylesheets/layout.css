@@ -23,6 +23,7 @@ a {
 
  .nav-bar
  {
+   position: sticky;
    margin: 0;
    padding: 0;
    color: #cdcdcd;
@@ -31,6 +32,12 @@ a {
     box-shadow: 0 4px 6px -6px #222;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+ }
+
+.nav-bar-logo img{
+  height: 45px;
+  padding-right: 10px;
  }
 
  a
@@ -174,7 +181,7 @@ a {
 
  #menu li
  {
-   padding: 10px 0;
+   padding: 10px 0 10px 45px;
    font-size: 22px;
  }
 
@@ -189,9 +196,11 @@ a {
  }
 
  .APP-name{
-  padding-right: 32%;
   color: #47a7cf;
+  text-decoration: none;
  }
+
+
 
 .auth {
   display: flex;
