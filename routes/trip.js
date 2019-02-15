@@ -53,7 +53,8 @@ router.post('/', async (req, res, next) => {
     // console.log("number of flight",selectedFlightInfo.length)
     if (selectedFlightInfo.length < 1) {
       const currentDate = new Date().toISOString().split('T')[0];
-      req.flash('info', 'There was no avarable flight... Search your different trip!');
+      req.flash('info', 'There was no available flight...');
+      req.flash('info', 'Search for a different trip!');
       res.redirect('/home');
       return;
     }
@@ -94,7 +95,9 @@ router.post('/', async (req, res, next) => {
     }
     if (selectedAccommodationInfo.length < 1) {
       const currentDate = new Date().toISOString().split('T')[0];
-      req.flash('info', 'ddThere was no avarable flight... Search your different trip!');
+      req.flash('info', `We found a flight to ${cityName}.`);
+      req.flash('info', `No available accommodation...`);
+      req.flash('info', `Search for a different trip!`);
       res.redirect('/home');
       return;
       // return res.redirect('/home');
