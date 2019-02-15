@@ -544,6 +544,11 @@ button:focus {
   background-color: transparent;
 }
 
+.details-btn button {
+  background: none;
+  border: none;
+}
+
 .my-trip-title {
   display: flex;
   align-items: center;
@@ -558,7 +563,8 @@ button:focus {
 }
 
 .refresh-btn {
-
+  background: none;
+  border: none;
 }
 
 /*
