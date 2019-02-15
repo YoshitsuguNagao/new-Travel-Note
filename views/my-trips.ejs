@@ -8,11 +8,13 @@
       <div class="city-name-container">
         City
       </div>
-      <div class="trip-date-container">
-        Trip Dates
-      </div>
-      <div class="trip-price-container">
-        Price
+      <div class="trip-date-price">
+        <div class="trip-date-container">
+          Trip Dates
+        </div>
+        <div class="trip-price-container">
+          Cost
+        </div>
       </div>
     </div>
   </li>
@@ -28,17 +30,19 @@
               <p><%= trip.city %></p>
             </div>
           </div>
-          <div class="trip-date-container">
-            <div class="trip-date-info">
-              <p><%= trip.departureDate %></p>
+          <div class="trip-date-price">
+            <div class="trip-date-container">
+              <div class="trip-date-info">
+                <p><%= trip.departureDate %></p>
+              </div>
+              <div class="trip-date-info">
+                <p><%= trip.returnDate %></p>
+              </div>
             </div>
-            <div class="trip-date-info">
-              <p><%= trip.returnDate %></p>
+            <div class="trip-price-container">
+              <% const total = trip.cost.flightCost + trip.cost.accommodationCost%>
+              <p>€ <%= total %></p>
             </div>
-          </div>
-          <div class="trip-price-container">
-            <% const total = trip.cost.flightCost + trip.cost.accommodationCost%>
-            <p>€<%= total %></p>
           </div>
         </div>
       </a>

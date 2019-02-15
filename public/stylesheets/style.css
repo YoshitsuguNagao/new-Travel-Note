@@ -410,20 +410,30 @@ button:focus {
 .one-trip-container {
   display: flex;
   border-bottom: 1px solid darkgray;
-  padding: 0.3rem 0;
+  padding: 0.3rem 1.5rem;
 }
 
 .city-name-container {
-  width: 35vw;
-  margin-left: 2rem;
+  width: 80vw;
+  /* margin-left: 2rem; */
 }
 
 .trip-date-container {
-  width: 40vw;
+  width: 25vw;
 }
 
 .one-trip-container p {
   margin: 0;
+}
+
+.trip-price-container {
+  width: 12vw;
+  display: flex;
+  align-items: center;
+}
+
+.trip-date-price {
+  display: flex;
 }
 
 .trip-detail-title {
