@@ -141,7 +141,7 @@ router.post('/', async (req, res, next) => {
     // console.log(activitiesList.length);
     const typeArr = activity.types;
     let activitySentence = 'Go the infomation center!';
-    if (typeArr.length > 0) {
+    if (typeArr) {
       for (let i = 0; i < typeArr.length; i++) {
         if (typeArr[i] === 'curch') {
           activitySentence = `Visit the ${activity.name}`;

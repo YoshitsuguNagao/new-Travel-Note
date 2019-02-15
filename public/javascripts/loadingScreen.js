@@ -1,4 +1,3 @@
-
 const flightBtn = document.querySelector('.trip-btn');
 const refreshBtn = document.querySelector('.refresh-btn');
 
@@ -14,17 +13,14 @@ function rotate() {
   // refreshBtn.classList.add('rotate');
 }
 
-
-console.log('holahola');
-
 function rotateRefresh() {
   refreshBtn.classList.add('rotate');
 }
 
-if(flightBtn) {
+if (flightBtn) {
   flightBtn.addEventListener('click', rotate);
 }
 
-console.log('hola',refreshBtn);
-console.log('hola2',rotateRefresh);
-refreshBtn.addEventListener('click', rotateRefresh);
+if (refreshBtn) {
+  refreshBtn.addEventListener('click', rotateRefresh);
+}
