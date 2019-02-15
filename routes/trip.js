@@ -30,6 +30,14 @@ router.post('/', async (req, res, next) => {
     const {
       departureDate, returnDate, budget, departureCity,
     } = req.body;
+    const dateUnixFrom = new Date(departureDate);
+    const dateUnixTo = new Date(returnDate);
+    if (dateUnixFrom > dateUnixTo) {
+      req.flash('info', 'Change your return date!');
+      res.redirect('/home');
+      return;
+    }
+    console.log(departureDate)
     console.log('departure city', departureCity);
     const tripDuration = getDuration(departureDate, returnDate);
     const departureDateForFlight = dateFormatChanger(departureDate);
@@ -52,7 +60,6 @@ router.post('/', async (req, res, next) => {
     });
     // console.log("number of flight",selectedFlightInfo.length)
     if (selectedFlightInfo.length < 1) {
-      const currentDate = new Date().toISOString().split('T')[0];
       req.flash('info', 'There was no available flight...');
       req.flash('info', 'Search for a different trip!');
       res.redirect('/home');
@@ -94,7 +101,6 @@ router.post('/', async (req, res, next) => {
       }
     }
     if (selectedAccommodationInfo.length < 1) {
-      const currentDate = new Date().toISOString().split('T')[0];
       req.flash('info', `We found a flight to ${cityName}.`);
       req.flash('info', `No available accommodation...`);
       req.flash('info', `Search for a different trip!`);
@@ -102,7 +108,6 @@ router.post('/', async (req, res, next) => {
       return;
       // return res.redirect('/home');
     }
-    console.log("hahahahahaha")
     const accommodationData1 = selectedAccommodationInfo[Math.floor(Math.random() * selectedAccommodationInfo.length)];
     const getAccommodationInfo = await axios.get(`http://developer.goibibo.com/api/voyager/?app_id=${process.env.APP_IP}&app_key=${process.env.APP_KEY}&method=hotels.get_hotels_data&id_list=[${accommodationData1.accommodationId}]&id_type=_id`);
     const accommodationData2 = Object.getOwnPropertyDescriptor(getAccommodationInfo.data.data, accommodationData1.accommodationId);
