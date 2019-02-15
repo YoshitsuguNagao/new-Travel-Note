@@ -10,7 +10,6 @@ function rotate() {
     return false;
   }
   flightBtn.classList.add('rotate');
-  // refreshBtn.classList.add('rotate');
 }
 
 function rotateRefresh() {

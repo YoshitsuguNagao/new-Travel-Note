@@ -112,7 +112,9 @@
   <div class="accommodation-info-container">
       <p><%= trip.activity.name %></p>
       <p><%= trip.activity.vicinity %></p>
+      <% if (trip.activity.rating) { %>
       <p>Rating: <%= trip.activity.rating %></p>
+      <% } %>
     </div>
 </div>
 

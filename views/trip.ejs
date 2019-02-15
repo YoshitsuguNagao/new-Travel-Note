@@ -138,7 +138,9 @@
     <div class="accommodation-info-container">
       <p><%= data.activity.name %></p>
       <p><%= data.activity.vicinity %></p>
-      <p>Rating: <%= data.activity.rating %></p>
+      <% if (data.activity.rating) { %>
+        <p>Rating: <%= data.activity.rating %></p>
+      <% } %>
     </div>
   </div>
   </div>
