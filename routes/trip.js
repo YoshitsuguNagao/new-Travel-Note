@@ -144,7 +144,7 @@ router.post('/', async (req, res, next) => {
     console.log(typeArr)
     if (typeArr.length > 0) {
       for (let i = 0; i < typeArr.length; i++) {
-        if (typeArr[i] === 'curch') {
+        if (typeArr[i] === 'church') {
           activitySentence = `Visit the ${activity.name}`;
         } else if (typeArr[i] === 'amusement_park') {
           activitySentence = `Visit the ${activity.name}`;
