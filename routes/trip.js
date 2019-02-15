@@ -48,7 +48,7 @@ router.post('/', async (req, res, next) => {
 
     /* Get flight info */
     const flightBudget = budget / 2;
-    const getFlightInfo = await axios.get(`https://api.skypicker.com/flights?fly_from=${departureCity}&date_from=${departureDateForFlight}&date_to=${departureDateForFlight}&return_from=${returnDateForFlight}&return_to=${returnDateForFlight}&curr=EUR&price_to=${flightBudget}&one_for_city=1&max_stopovers=1`);
+    const getFlightInfo = await axios.get(`https://api.skypicker.com/flights?fly_from=${departureCity}&date_from=${departureDateForFlight}&date_to=${departureDateForFlight}&return_from=${returnDateForFlight}&return_to=${returnDateForFlight}&curr=EUR&price_to=${flightBudget}&one_for_city=1&max_stopovers=0`);
     const selectedFlightInfo = [];
     const selectedAccommodationInfo = [];
     getFlightInfo.data.data.forEach((oneFlightData) => {
