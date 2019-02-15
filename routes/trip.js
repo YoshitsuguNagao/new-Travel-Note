@@ -37,8 +37,8 @@ router.post('/', async (req, res, next) => {
       res.redirect('/home');
       return;
     }
-    console.log(departureDate)
-    console.log('departure city', departureCity);
+    // console.log(departureDate)
+    // console.log('departure city', departureCity);
     const tripDuration = getDuration(departureDate, returnDate);
     const departureDateForFlight = dateFormatChanger(departureDate);
     const returnDateForFlight = dateFormatChanger(returnDate);
@@ -67,7 +67,7 @@ router.post('/', async (req, res, next) => {
     }
     const flightData = selectedFlightInfo[Math.floor(Math.random() * selectedFlightInfo.length)];
     const flightCost = flightData.price;
-    console.log('cityTo:', flightData.cityTo);
+    // console.log('cityTo:', flightData.cityTo);
     /* Get Accommodation info */
     const accommodationBudgetEur = budget - flightCost;
     const cityName = flightData.cityTo;
@@ -136,9 +136,9 @@ router.post('/', async (req, res, next) => {
     const activitiesList = [...amusementParkListSorted, ...artGalleryListSorted, ...churchListSorted, parkListSorted, ...nightClubListSorted];
     // console.log('merge activities', activitiesList);
     const activity = activitiesList[(Math.floor(Math.random() * activitiesList.length))];
-    console.log('activity', activity);
+    // console.log('activity', activity);
     // console.log('activity name', activity.name);
-    console.log(activitiesList.length);
+    // console.log(activitiesList.length);
     const typeArr = activity.types;
     let activitySentence = 'Go the infomation center!';
     if (typeArr.length > 0) {

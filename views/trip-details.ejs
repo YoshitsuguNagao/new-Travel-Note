@@ -1,8 +1,14 @@
 <div class="trip-detail-title">
   <h2>Trip details</h2>
 </div>
-<div class="city-name">
-  <h3><%= trip.city %></h3>
+  <div class="my-trip-title">
+  <div class="city-name">
+    <h3><%= trip.city %></h3>
+  </div>
+  <div class="my-trip-price-container">
+    <% const total = trip.cost.flightCost + trip.cost.accommodationCost %>
+    <p>€ <%= total %></p>
+  </div>
 </div>
 <div class="flight-container">
   <div class="info-title-container">

@@ -543,6 +543,24 @@ button:focus {
   height: 45px;
   background-color: transparent;
 }
+
+.my-trip-title {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  padding-right: 0.5rem;
+  justify-content: space-between;
+}
+
+.my-trip-price-container {
+  display: flex;
+  align-items: center;
+}
+
+.refresh-btn {
+
+}
+
 /*
 .rotate {
   background: transparent url("../images/logo.png") no-repeat center center;
@@ -567,11 +585,6 @@ button:focus {
 
 
 .rotate {
-  background: transparent url("../images/logo.png") no-repeat center center;
-  background-size: contain;
-  padding: 75px;
-  border: none;
-  color: transparent;
   -webkit-animation-name: rotate;
           animation-name: rotate;
   -webkit-animation-duration: 5000ms;
@@ -607,3 +620,4 @@ button:focus {
                 transform:rotate(360deg);
     }
 }
+
