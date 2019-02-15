@@ -23,6 +23,7 @@ a {
 
 .nav-bar {
   position: sticky;
+  z-index: 50;
   margin: 0;
   padding: 0;
   color: #cdcdcd;
