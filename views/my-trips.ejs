@@ -11,6 +11,9 @@
       <div class="trip-date-container">
         Trip Dates
       </div>
+      <div class="trip-price-container">
+        Price
+      </div>
     </div>
   </li>
   <% trips.forEach(trip => { %>
@@ -18,10 +21,24 @@
       <a href="/trip/my-trips/<%= trip.id %>">
         <div class="one-trip-container">
           <div class="city-name-container">
-            <p><%= trip.city %></p>
+            <div class="city-name-info">
+              <p><%= trip.flight.cityFrom %></p>
+            </div>
+            <div class="city-name-info">
+              <p><%= trip.city %></p>
+            </div>
           </div>
           <div class="trip-date-container">
-            <p><%= trip.departureDate %> ~ <%= trip.returnDate %></p>
+            <div class="trip-date-info">
+              <p><%= trip.departureDate %></p>
+            </div>
+            <div class="trip-date-info">
+              <p><%= trip.returnDate %></p>
+            </div>
+          </div>
+          <div class="trip-price-container">
+            <% const total = trip.cost.flightCost + trip.cost.accommodationCost%>
+            <p>€<%= total %></p>
           </div>
         </div>
       </a>

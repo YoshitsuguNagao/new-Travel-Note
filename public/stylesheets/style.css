@@ -212,7 +212,7 @@ left: 45%;
   text-align: end;
   font-size: 1rem;
   height: 2rem;
-  width: 11rem;
+  width: 10rem;
  }
 
  .date-input-container label {
@@ -258,6 +258,7 @@ left: 45%;
   width: 50vw;
   margin-left: 0.5rem;
   background-color: transparent;
+  height: 2rem;
 }
 
 .search-error {
@@ -418,7 +419,7 @@ button:focus {
 }
 
 .trip-date-container {
-  width: 100%;
+  width: 40vw;
 }
 
 .one-trip-container p {
@@ -427,6 +428,18 @@ button:focus {
 
 .trip-detail-title {
   text-align: center;
+}
+
+.trip-detail-title h2 {
+  margin: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.city-name h3 {
+  padding: 1rem;
+  margin: 0;
+  font-size: 2rem;
+  color: #47a7cf;
 }
 
 .oneway-container {
@@ -518,6 +531,7 @@ button:focus {
 
 .details-btn img {
   height: 45px;
+  background-color: transparent;
 }
 /*
 .rotate {

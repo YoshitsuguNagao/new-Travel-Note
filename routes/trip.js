@@ -169,6 +169,7 @@ router.post('/', async (req, res, next) => {
       budget,
       cost,
       activitySentence,
+      departureCity,
     });
   } catch (error) {
     next(error);
