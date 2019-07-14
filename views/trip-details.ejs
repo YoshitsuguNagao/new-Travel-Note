@@ -6,9 +6,12 @@
     <h3><%= trip.city %></h3>
   </div>
   <div class="my-trip-price-container">
-    <% const total = trip.cost.flightCost + trip.cost.accommodationCost %>
-    <p>€ <%= total %></p>
+    <% total = trip.cost.flightCost + trip.cost.accommodationCost %>
+    <p><%= total %></p>
   </div>
+</div>
+<div class="map-container">
+  <div id='map' style='width: 400px; height: 200px;'></div>
 </div>
 <div class="flight-container">
   <div class="info-title-container">
@@ -128,3 +131,17 @@
     <a href="/trip/my-trips"><img src="/images/back.png" alt="back button"></a>
   </div>
 </div>
+
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<% lat = trip.accommodation.data2.value.hotel_geo_node.location.lat %>
+<script>
+  console.log(lat)
+  mapboxgl.accessToken = 'pk.eyJ1IjoieW9zaGl0c3VndW5hZ2FvIiwiYSI6ImNqczY3c3RyaDBsbGs0M3BmZ3RqcTVsOG8ifQ.hpeaiUl8jGY7iyU1smR3eg';
+  var map = new mapboxgl.Map({
+  container: 'map', // container id
+  style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location
+  center: [-74.50, lat], // starting position [lng, lat]
+  zoom: 9 // starting zoom
+  });
+</script>
