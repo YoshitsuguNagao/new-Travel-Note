@@ -221,18 +221,46 @@ a:hover {
           justify-content: center;
 }
 
-.logo {
+.splash-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding-top: 7vh;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #47a7cf;
+  height: 100vh;
 }
 
-.logo img {
+.splash-container .splash-logo {
   width: 40vw;
+  max-width: 300px;
+}
+
+.splash-container .splash-logo img {
+  width: 100%;
+}
+
+.splash-container .get-started {
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 4rem;
+}
+
+.splash-container .get-started a {
+  color: #47a7cf;
+  background-color: white;
+  -webkit-box-shadow: 0px 8px 14px #333232;
+          box-shadow: 0px 8px 14px #333232;
+  border-radius: 2rem;
+  padding: 0.5rem;
 }
 
 .text-homepage {
@@ -400,40 +428,6 @@ a:hover {
 
 .logout-btn:hover {
   color: tomato;
-}
-
-.get-started {
-  text-align: center;
-  font-size: 2rem;
-  color: white;
-  padding: 1rem;
-  margin-top: 4rem;
-}
-
-.get-started a {
-  color: white;
-  border: 2px solid white;
-  border-radius: 2rem;
-  padding: 0.5rem;
-  background-color: white;
-  color: #47a7cf;
-  -webkit-box-shadow: 0px 8px 14px #333232;
-          box-shadow: 0px 8px 14px #333232;
-}
-
-.splash-container {
-  background-color: #47a7cf;
-  height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
 
 .none {
