@@ -17,6 +17,10 @@ body {
   margin: 0;
 }
 
+main {
+  height: 100vh;
+}
+
 a {
   color: #00B7FF;
 }
@@ -109,14 +113,9 @@ a {
   background: #232323;
 }
 
-.trip-btn input:checked ~ span{
-
-}
-
 .loading {
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
 }
-
 
  /*
   * But let's hide the middle one.
@@ -144,7 +143,6 @@ a {
   margin: -100px 0 0 -50px;
   padding: 50px;
   padding-top: 125px;
-
   background: #ededed;
   list-style-type: none;
   -webkit-font-smoothing: antialiased;

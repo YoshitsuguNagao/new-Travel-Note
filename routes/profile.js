@@ -10,10 +10,7 @@ const bcryptSalt = 10;
 
 /* GET profile page. */
 router.get('/', (req, res, next) => {
-  // console.log(req.session.currentUser);
-
   const { _id } = req.session.currentUser;
-  console.log(_id);
   User.findById({ _id: ObjectId(_id) })
     .then((user) => {
       res.render('profile', user);

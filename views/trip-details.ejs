@@ -1,7 +1,8 @@
 <div class="trip-detail-title">
   <h2>Trip details</h2>
 </div>
-  <div class="my-trip-title">
+
+<div class="my-trip-title">
   <div class="city-name">
     <h3><%= trip.city %></h3>
   </div>
@@ -13,6 +14,7 @@
 <div class="map-container">
   <div id='map' style='width: 400px; height: 200px;'></div>
 </div>
+
 <div class="flight-container">
   <div class="info-title-container">
     <div class="info-title"><h3>Flight Info.</h3></div>
@@ -83,7 +85,8 @@
             <% if (minutes < 10) {minutes = "0" + minutes} %>
             <div class="flight-hour"><p><%= hours %>:<%= minutes %></p></div>
             <div><p><%= trip.flight.route[i].flyTo %> <%= trip.flight.route[i].cityTo %></p></div>
-          </div>        </div>
+          </div>
+        </div>
       <% }; %>
       <%if (trip.flight.flyTo === trip.flight.route[i].flyTo) { %>
         <% flightFlag = 0 %>
@@ -113,12 +116,12 @@
     <div class="info-title"><h3>Activity Info.</h3></div>
   </div>
   <div class="accommodation-info-container">
-      <p><%= trip.activity.name %></p>
-      <p><%= trip.activity.vicinity %></p>
-      <% if (trip.activity.rating) { %>
+    <p><%= trip.activity.name %></p>
+    <p><%= trip.activity.vicinity %></p>
+    <% if (trip.activity.rating) { %>
       <p>Rating: <%= trip.activity.rating %></p>
-      <% } %>
-    </div>
+    <% } %>
+  </div>
 </div>
 
 

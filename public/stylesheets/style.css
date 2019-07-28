@@ -44,7 +44,6 @@
   font-size: 1.5rem;
   padding: 0rem 2rem;
   text-align: center;
-  /* color: rgba(71, 167, 207); */
   color: #47a7cf;
 }
 
@@ -126,10 +125,16 @@
   padding: 1rem;
 }
 
+.home-btn {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .home-btn a>img{
 height: 45px;
-position: absolute;
-left: 45%;
+/* position: absolute;
+left: 45%; */
 }
 
 .account-message {

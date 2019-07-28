@@ -8,7 +8,7 @@ const User = require('../models/user');
 
 const bcryptSalt = 10;
 
-router.get('/signup', (req, res, next) => {
+router.get('/signup', (req, res) => {
   res.render('auth/signup', { errorMessage: undefined });
 });
 
@@ -21,7 +21,6 @@ router.post('/signup', (req, res, next) => {
   if (username === '' || password === '') {
     // req.flash('error', 'empty fields by flash');
     // res.redirect('auth/signup');
-    // console.log('flash?')
     res.render('auth/signup', {
       errorMessage: 'Indicate a username and a password to sign up',
     });
@@ -50,7 +49,7 @@ router.post('/signup', (req, res, next) => {
     });
 });
 
-router.get('/login', (req, res, next) => {
+router.get('/login', (req, res) => {
   res.render('auth/login', { errorMessage: undefined });
 });
 
@@ -88,8 +87,8 @@ router.post('/login', (req, res, next) => {
     });
 });
 
-router.get('/logout', (req, res, next) => {
-  req.session.destroy((err) => {
+router.get('/logout', (req, res) => {
+  req.session.destroy(() => {
     // cannot access session here
     res.redirect('/');
   });

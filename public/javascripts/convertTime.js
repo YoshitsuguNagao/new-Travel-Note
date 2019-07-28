@@ -4,16 +4,16 @@ function convertTime(timeInUnix) {
   let minutes;
 
   if (time.getHours() < 10) {
-    hours = "0" + time.getHours().toString();
+    hours = `0${time.getHours().toString()}`;
   } else {
     hours = time.getHours().toString();
   }
   if (time.getMinutes() < 10) {
-    minutes = "0" + time.getMinutes().toString();
+    minutes = `0${time.getMinutes().toString()}`;
   } else {
     minutes = time.getMinutes().toString();
   }
-  return hours + ":" + minutes;
+  return `${hours}:${minutes}`;
 }
 
 module.exports = convertTime;
