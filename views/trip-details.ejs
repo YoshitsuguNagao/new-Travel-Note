@@ -30,15 +30,15 @@
     <% let convertedTime; %>
     <% let hours; %>
     <% let minutes; %>
-    <% for(let i = 0; i < trip.flight.route.length; i++) { %>
-      <%if (flightFlag === 0) { %>
+    <% for(let i = 0; i < trip.flight.route.length; i++){ %>
+      <%if(flightFlag === 0){ %>
         <div class="flight-card">
           <div class="flight-card-info">
             <% convertedTime = new Date(trip.flight.route[i].dTimeUTC * 1000) %>
             <% hours = convertedTime.getHours() %>
             <% minutes = convertedTime.getMinutes() %>
-            <% if (hours < 10) {hours = "0" + hours} %>
-            <% if (minutes < 10) {minutes = "0" + minutes} %>
+            <% if(hours < 10) {hours = "0" + hours} %>
+            <% if(minutes < 10) {minutes = "0" + minutes} %>
             <div class="flight-hour"><p><%= hours %>:<%= minutes %></p></div>
             <div><p><%= trip.flight.route[i].flyFrom %> <%= trip.flight.route[i].cityFrom %></p></div>
           </div>
@@ -46,14 +46,14 @@
             <% convertedTime = new Date(trip.flight.route[i].aTimeUTC * 1000) %>
             <% hours = convertedTime.getHours() %>
             <% minutes = convertedTime.getMinutes() %>
-            <% if (hours < 10) {hours = "0" + hours} %>
-            <% if (minutes < 10) {minutes = "0" + minutes} %>
+            <% if(hours < 10) {hours = "0" + hours} %>
+            <% if(minutes < 10) {minutes = "0" + minutes} %>
             <div class="flight-hour"><p><%= hours %>:<%= minutes %></p></div>
             <div><p><%= trip.flight.route[i].flyTo %> <%= trip.flight.route[i].cityTo %></p></div>
           </div>
         </div>
       <% }; %>
-      <%if (trip.flight.flyTo === trip.flight.route[i].flyTo) { %>
+      <%if(trip.flight.flyTo === trip.flight.route[i].flyTo){ %>
         <% flightFlag = 1 %>
       <% }; %>
     <% }; %>
@@ -65,15 +65,15 @@
       <div class="duration-info"><p><%= trip.flight.return_duration%></p></div>
     </div>
     <div class="flight-date"><p><%= trip.returnDate%></p></div>
-    <% for(let i = 0; i < trip.flight.route.length; i++) { %>
-      <%if (flightFlag === 0) { %>
+    <% for(let i = 0; i < trip.flight.route.length; i++){ %>
+      <%if(flightFlag === 0){ %>
         <div class="flight-card">
           <div class="flight-card-info">
             <% convertedTime = new Date(trip.flight.route[i].dTimeUTC * 1000) %>
             <% hours = convertedTime.getHours() %>
             <% minutes = convertedTime.getMinutes() %>
-            <% if (hours < 10) {hours = "0" + hours} %>
-            <% if (minutes < 10) {minutes = "0" + minutes} %>
+            <% if(hours < 10) {hours = "0" + hours} %>
+            <% if(minutes < 10) {minutes = "0" + minutes} %>
             <div class="flight-hour"><p><%= hours %>:<%= minutes %></p></div>
             <div><p><%= trip.flight.route[i].flyFrom %> <%= trip.flight.route[i].cityFrom %></p></div>
           </div>
@@ -81,14 +81,14 @@
             <% convertedTime = new Date(trip.flight.route[i].aTimeUTC * 1000) %>
             <% hours = convertedTime.getHours() %>
             <% minutes = convertedTime.getMinutes() %>
-            <% if (hours < 10) {hours = "0" + hours} %>
-            <% if (minutes < 10) {minutes = "0" + minutes} %>
+            <% if(hours < 10) {hours = "0" + hours} %>
+            <% if(minutes < 10) {minutes = "0" + minutes} %>
             <div class="flight-hour"><p><%= hours %>:<%= minutes %></p></div>
             <div><p><%= trip.flight.route[i].flyTo %> <%= trip.flight.route[i].cityTo %></p></div>
           </div>
         </div>
       <% }; %>
-      <%if (trip.flight.flyTo === trip.flight.route[i].flyTo) { %>
+      <%if(trip.flight.flyTo === trip.flight.route[i].flyTo){ %>
         <% flightFlag = 0 %>
       <% }; %>
     <% }; %>
@@ -104,7 +104,7 @@
     <p><%= trip.accommodation.data2.value.hotel_data_node.name %></p>
     <p><%= trip.accommodation.data2.value.hotel_data_node.loc.full %></p>
     <p>Type:   <%= trip.accommodation.data2.value.hotel_geo_node.tags.property_type[0] %></p>
-    <% if(trip.accommodation.data2.value.hotel_data_node.contact.phone[0]) { %>
+    <% if(trip.accommodation.data2.value.hotel_data_node.contact.phone[0]){ %>
       <p>TEL: <%= trip.accommodation.data2.value.hotel_data_node.contact.phone[0] %></p>
     <% } %>
     <p>Rating: <%= trip.accommodation.data2.value.hotel_data_node.rating %></p>
@@ -118,7 +118,7 @@
   <div class="accommodation-info-container">
     <p><%= trip.activity.name %></p>
     <p><%= trip.activity.vicinity %></p>
-    <% if (trip.activity.rating) { %>
+    <% if(trip.activity.rating){ %>
       <p>Rating: <%= trip.activity.rating %></p>
     <% } %>
   </div>
@@ -139,7 +139,6 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <% lat = trip.accommodation.data2.value.hotel_geo_node.location.lat %>
 <script>
-  console.log(lat)
   mapboxgl.accessToken = 'pk.eyJ1IjoieW9zaGl0c3VndW5hZ2FvIiwiYSI6ImNqczY3c3RyaDBsbGs0M3BmZ3RqcTVsOG8ifQ.hpeaiUl8jGY7iyU1smR3eg';
   var map = new mapboxgl.Map({
   container: 'map', // container id

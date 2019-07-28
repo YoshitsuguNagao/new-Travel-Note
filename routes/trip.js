@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const axios = require('axios');
 const Trip = require('../models/trip');
-const City = require('../models/city');
+// const City = require('../models/city');
 const dateFormatChanger = require('../public/javascripts/dateFormatChanger');
 const getDuration = require('../public/javascripts/getDuration');
 const CityList = require('../models/cityList');
@@ -12,18 +12,18 @@ const { ObjectId } = mongoose.Types;
 const router = express.Router();
 
 
-router.get('/', (req, res, next) => {
-  // res.send('respond with a resource');
-  // res.render('trip', { data })
-  console.log('I am in get /trip');
-  // City.find({})
-  //   .then((cities) => {
-  //     const num = Math.floor(Math.random() * cities.length);
-  //     const city = cities[num];
-  //     res.render('trip', { city });
-  //   })
-  //   .catch(next);
-});
+// router.get('/', (req, res, next) => {
+//   res.send('respond with a resource');
+//   res.render('trip', { data })
+//   console.log('I am in get /trip');
+//   City.find({})
+//   .then((cities) => {
+//     const num = Math.floor(Math.random() * cities.length);
+//     const city = cities[num];
+//     res.render('trip', { city });
+//   })
+//   .catch(next);
+// });
 
 router.post('/', async (req, res, next) => {
   try {
@@ -99,8 +99,8 @@ router.post('/', async (req, res, next) => {
     }
     if (selectedAccommodationInfo.length < 1) {
       req.flash('info', `We found a flight to ${cityName}.`);
-      req.flash('info', `No available accommodation...`);
-      req.flash('info', `Search for a different trip!`);
+      req.flash('info', 'No available accommodation...');
+      req.flash('info', 'Search for a different trip!');
       res.redirect('/home');
       return;
       // return res.redirect('/home');
@@ -177,9 +177,8 @@ router.post('/', async (req, res, next) => {
 // }
 
 router.post('/save', (req, res, next) => {
-  let {
-    city, departureDate, returnDate, cost, flightData, accommodationData1, accommodationData2, activity,
-  } = req.body;
+  let { cost, flightData, accommodationData1, accommodationData2, activity } = req.body;
+  const { city, departureDate, returnDate } = req.body;
   cost = JSON.parse(cost);
   flightData = JSON.parse(flightData);
   accommodationData1 = JSON.parse(accommodationData1);

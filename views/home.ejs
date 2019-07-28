@@ -2,11 +2,11 @@
   <form action="/trip" method="POST" name="tripForm">
     <div class="date-container">
       <div class="date-input-container">
-        <label for="departureDate">Departure</label></br>
+        <label for="departureDate">Departure</label><br>
         <input type="date" min=<%= currentDate %> required pattern="^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$" name="departureDate" required>
       </div>
       <div class="date-input-container">
-        <label for="returnDate">Return</label></br>
+        <label for="returnDate">Return</label><br>
         <input type="date" name="returnDate" min=<%= currentDate %> required>
       </div>
     </div>
@@ -33,11 +33,11 @@
       <div class="logo">
         <button class="trip-btn" type="submit"></button>
       </div>
-      <% if (errorMessage) { %>
+      <% if(errorMessage){ %>
         <div class="error-message search-error">
         <%errorMessage.forEach(message => { %>
 
-        <%= message %></br>
+        <%= message %><br>
         <% })%>
         </div>
       <% } %>

@@ -1,0 +1,29 @@
+@mixin flexbox($justify-content:null, $align-items:null, $flex-direction:null) {
+  display: flex;
+  @if $justify-content { justify-content: $justify-content; }
+  @if $align-items { align-items: $align-items; }
+  @if $flex-direction { flex-direction: $flex-direction; }
+}
+
+@mixin pos($pos, $left:null, $top:null, $right:null, $bottom:null) {
+	position:$pos;
+	@if $left { left: $left; }
+	@if $top { top: $top; }
+	@if $right { right: $right; }
+	@if $bottom { bottom: $bottom; }
+}
+
+@mixin size($width, $height) {
+	width:$width;
+	height:$height;
+}
+
+@mixin poCentering {
+  top: 50%;
+  right: 50%;
+  bottom: 50%;
+  left: 50%;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}

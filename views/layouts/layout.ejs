@@ -4,7 +4,6 @@
     <title></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="/stylesheets/layout.css" rel="stylesheet">
     <link href="/stylesheets/style.css" rel="stylesheet">
     <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon">
     <link rel="icon" href="/images/logo.png" type="image/x-icon">
@@ -17,9 +16,9 @@
     </head>
   <body>
   <header>
-    <% if(currentUser) { %>
+    <% if(currentUser){ %>
       <nav role="navigation" class="nav-bar">
-    <% } else { %>
+    <% }else{ %>
       <nav role="navigation" class="nav-bar none">
     <% }%>
         <div id="menuToggle">
