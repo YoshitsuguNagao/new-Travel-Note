@@ -33,6 +33,20 @@ a:hover {
   color: tomato;
 }
 
+.none {
+  display: none;
+}
+
+.loading {
+  -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  transition: -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+}
+
+/*===============
+   Splash Screen
+  ===============*/
 .splash-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -75,6 +89,9 @@ a:hover {
   padding: 0.5rem;
 }
 
+/*========
+   Navbar
+  ========*/
 .nav-bar {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -205,13 +222,6 @@ a:hover {
   left: 0;
 }
 
-.loading {
-  -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-  transition: -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-}
-
 /*
  * Make this absolute positioned
  * at the top left of the screen
@@ -242,13 +252,9 @@ a:hover {
   font-size: 22px;
 }
 
-.text-homepage {
-  font-size: 1.5rem;
-  padding: 0rem 2rem;
-  text-align: center;
-  color: #47a7cf;
-}
-
+/*=============
+   Auth Screen
+  =============*/
 .viewPort {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -358,6 +364,9 @@ a:hover {
   color: darkslategrey;
 }
 
+/*================
+   Profile Screen
+  ================*/
 .profile-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -431,6 +440,9 @@ a:hover {
   color: tomato;
 }
 
+/*=============
+   Home Screen
+  =============*/
 .home-screen {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -609,18 +621,12 @@ a:hover {
   padding: 1rem;
 }
 
-.home-btn {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  height: 100%;
-}
-
-.home-btn a > img {
-  height: 45px;
+/*================
+   My Trip Screen
+  ================*/
+.my-trips-title {
+  text-align: center;
+  margin: 1rem 0;
 }
 
 .trip-list {
@@ -628,8 +634,46 @@ a:hover {
   padding: 0;
 }
 
-.none {
-  display: none;
+.trip-list li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  padding: 0.3rem 1.5rem;
+  border-bottom: 1px solid darkgray;
+}
+
+.trip-list .city-name {
+  width: 100%;
+}
+
+.trip-list .trip-date-price {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.trip-list .trip-dates {
+  width: 25vw;
+}
+
+.trip-list .trip-price {
+  width: 12vw;
+}
+
+.home-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 1rem;
+  height: 100%;
+}
+
+.home-btn a > img {
+  height: 45px;
 }
 
 .empty-container {
@@ -765,47 +809,6 @@ button:focus {
 
 .tab-content p {
   margin: 1em;
-}
-
-.my-trips-title {
-  text-align: center;
-}
-
-.one-trip-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  border-bottom: 1px solid darkgray;
-  padding: 0.3rem 1.5rem;
-}
-
-.one-trip-container p {
-  margin: 0;
-}
-
-.city-name-container {
-  width: 80vw;
-  /* margin-left: 2rem; */
-}
-
-.trip-date-container {
-  width: 25vw;
-}
-
-.trip-price-container {
-  width: 12vw;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.trip-date-price {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .trip-detail-title {

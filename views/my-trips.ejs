@@ -4,49 +4,31 @@
 
 <ul class="trip-list">
   <li>
-    <div class="one-trip-container">
-      <div class="city-name-container">
-        City
-      </div>
-      <div class="trip-date-price">
-        <div class="trip-date-container">
-          Trip Dates
-        </div>
-        <div class="trip-price-container">
-          Cost
-        </div>
-      </div>
+    <p class="city-name">City</p>
+    <div class="trip-date-price">
+      <p class="trip-dates">Trip Dates</p>
+      <p class="trip-price">Cost</p>
     </div>
   </li>
   <% trips.forEach(trip => { %>
-    <li>
-      <a href="/trip/my-trips/<%= trip.id %>">
-        <div class="one-trip-container">
-          <div class="city-name-container">
-            <div class="city-name-info">
-              <p><%= trip.flight.cityFrom %></p>
-            </div>
-            <div class="city-name-info">
-              <p><%= trip.city %></p>
-            </div>
+    <a href="/trip/my-trips/<%= trip.id %>">
+      <li>
+        <div class="city-name">
+          <p><%= trip.flight.cityFrom %></p>
+          <p><%= trip.city %></p>
+        </div>
+        <div class="trip-date-price">
+          <div class="trip-dates">
+            <p><%= trip.departureDate %></p>
+            <p><%= trip.returnDate %></p>
           </div>
-          <div class="trip-date-price">
-            <div class="trip-date-container">
-              <div class="trip-date-info">
-                <p><%= trip.departureDate %></p>
-              </div>
-              <div class="trip-date-info">
-                <p><%= trip.returnDate %></p>
-              </div>
-            </div>
-            <div class="trip-price-container">
-              <% const total = trip.cost.flightCost + trip.cost.accommodationCost%>
-              <p>€ <%= total %></p>
-            </div>
+          <div class="trip-price">
+            <% const total = trip.cost.flightCost + trip.cost.accommodationCost%>
+            <p>€ <%= total %></p>
           </div>
         </div>
-      </a>
-    </li>
+      </li>
+    </a>
   <% }); %>
 </ul>
 

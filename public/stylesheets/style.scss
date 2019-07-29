@@ -11,6 +11,17 @@ a {
   }
 }
 
+.none {
+  display: none;
+}
+
+.loading {
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+/*===============
+   Splash Screen
+  ===============*/
 .splash-container {
   @include flexbox(center,center,column);
   background-color: $themeColor;
@@ -36,6 +47,9 @@ a {
   }
 }
 
+/*========
+   Navbar
+  ========*/
 .nav-bar {
   @include flexbox(space-between,center);
   @include size(100vw,65px);
@@ -122,10 +136,6 @@ a {
   }
 }
 
-.loading {
-  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
-}
-
 /*
  * Make this absolute positioned
  * at the top left of the screen
@@ -150,13 +160,9 @@ a {
   }
 }
 
-.text-homepage {
-  font-size: 1.5rem;
-  padding: 0rem 2rem;
-  text-align: center;
-  color: $themeColor;
-}
-
+/*=============
+   Auth Screen
+  =============*/
 .viewPort {
   @include flexbox(center,center,column);
   @include size(100vw,100vh);
@@ -220,6 +226,9 @@ a {
   }
 }
 
+/*================
+   Profile Screen
+  ================*/
 .profile-container {
   @include flexbox(center,center,column);
   text-align: center;
@@ -268,6 +277,9 @@ a {
   }
 }
 
+/*=============
+   Home Screen
+  =============*/
 .home-screen {
   @include flexbox(space-between,null,column);
   height: calc(100vh - 65px);
@@ -360,23 +372,50 @@ a {
 .error-message {
   padding: 1rem;
 }
+/*================
+   My Trip Screen
+  ================*/
+.my-trips-title {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.trip-list {
+  list-style: none;
+  padding: 0;
+  li {
+    display: flex;
+    width: 100%;
+    padding: 0.3rem 1.5rem;
+    border-bottom: 1px solid darkgray;
+  }
+  .city-name {
+    width: 100%;
+  }
+  .trip-date-price {
+    display: flex;
+  }
+  .trip-dates {
+    width: 25vw;
+  }
+  .trip-price {
+    width: 12vw;
+  }
+}
+
 
 .home-btn {
   @include flexbox(center);
+  margin-top: 1rem;
   height: 100%;
   a > img{
     height: 45px;
   }
 }
 
-.trip-list {
-  list-style: none;
-  padding: 0;
-}
 
-.none {
-  display: none;
-}
+
+
 
 .empty-container {
   margin: 29.5px;
@@ -489,37 +528,9 @@ button:focus {
   }
 }
 
-.my-trips-title {
-  text-align: center;
-}
 
-.one-trip-container {
-  display: flex;
-  border-bottom: 1px solid darkgray;
-  padding: 0.3rem 1.5rem;
-  p {
-    margin: 0;
-  }
-}
 
-.city-name-container {
-  width: 80vw;
-  /* margin-left: 2rem; */
-}
 
-.trip-date-container {
-  width: 25vw;
-}
-
-.trip-price-container {
-  width: 12vw;
-  display: flex;
-  align-items: center;
-}
-
-.trip-date-price {
-  display: flex;
-}
 
 .trip-detail-title {
   text-align: center;
