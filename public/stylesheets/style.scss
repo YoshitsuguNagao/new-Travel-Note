@@ -2,10 +2,6 @@
 @import "variables";
 @import "mixins";
 
-main {
-  height: 100vh;
-}
-
 a {
   color: #00B7FF;
   text-decoration: none;
@@ -15,26 +11,53 @@ a {
   }
 }
 
+.splash-container {
+  @include flexbox(center,center,column);
+  background-color: $themeColor;
+  height: 100vh;
+  .splash-logo {
+    width: 40vw;
+    max-width: 300px;
+    img {
+      width: 100%;
+    }
+  }
+  .get-started {
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 4rem;
+    a {
+      color: $themeColor;
+      background-color: white;
+      box-shadow: 0px 8px 14px #333232;
+      border-radius: 2rem;
+      padding: 0.5rem;
+    }
+  }
+}
+
 .nav-bar {
   @include flexbox(space-between,center);
+  @include size(100vw,65px);
   position: sticky;
   z-index: 50;
-  margin: 0;
-  padding: 0;
   color: #cdcdcd;
   font-family: "Avenir Next", "Avenir", sans-serif;
   border-bottom: 1px solid grey;
   box-shadow: 0 4px 6px -6px #222;
-  .nav-bar-logo img {
+  padding: 1rem;
+  img {
     height: 45px;
-    padding-right: 10px;
+  }
+  .nav-title {
+    color: $themeColor;
+    text-decoration: none;
   }
 }
 
 #menuToggle {
   @include flexbox(space-between);
   position: sticky;
-  padding: 1rem;
   z-index: 1;
   -webkit-user-select: none;
   user-select: none;
@@ -48,12 +71,11 @@ a {
     -webkit-touch-callout: none;
   }
   /*
-  * Just a quick hamburger
-  */
+   * Just a quick hamburger
+   */
   span {
+    @include size(33px,4px);
     display: block;
-    width: 33px;
-    height: 4px;
     margin-bottom: 5px;
     position: relative;
     background: #cdcdcd;
@@ -86,17 +108,17 @@ a {
     transform: rotate(0deg) scale(0.2, 0.2);
   }
   /*
-  * Ohyeah and the last one should go the other direction
-  */
+   * Ohyeah and the last one should go the other direction
+   */
   input:checked ~ span:nth-last-child(2) {
     transform: rotate(-45deg) translate(0, -1px);
   }
   /*
-  * And let's slide it in from the left
-  */
+   * And let's slide it in from the left
+   */
   input:checked ~ ul {
-  transform: none;
-  left: 0;
+    transform: none;
+    left: 0;
   }
 }
 
@@ -104,10 +126,10 @@ a {
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
 }
 
- /*
-  * Make this absolute positioned
-  * at the top left of the screen
-  */
+/*
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
 #menu {
   left: -350px;
   position: absolute;
@@ -125,36 +147,6 @@ a {
   li {
     padding: 10px 0 10px 45px;
     font-size: 22px;
-  }
-}
-
- .APP-name{
-  color: $themeColor;
-  text-decoration: none;
- }
-
-.splash-container {
-  @include flexbox(center,center,column);
-  background-color: $themeColor;
-  height: 100vh;
-  .splash-logo {
-    width: 40vw;
-    max-width: 300px;
-    img {
-      width: 100%;
-    }
-  }
-  .get-started {
-    text-align: center;
-    font-size: 2rem;
-    margin-top: 4rem;
-    a {
-      color: $themeColor;
-      background-color: white;
-      box-shadow: 0px 8px 14px #333232;
-      border-radius: 2rem;
-      padding: 0.5rem;
-    }
   }
 }
 
@@ -198,6 +190,9 @@ a {
     color: grey;
     margin: .75rem auto;
     outline: none;
+    &::placeholder {
+      color: $placeholderColor;
+    }
   }
   button {
     color: $themeColor;
@@ -249,7 +244,6 @@ a {
     background-color: transparent;
     margin-top: 0.5rem;
     padding: 3px 10px;
-
   }
 }
 
@@ -274,33 +268,111 @@ a {
   }
 }
 
+.home-screen {
+  @include flexbox(space-between,null,column);
+  height: calc(100vh - 65px);
+  padding: 2rem 1rem;
+  form {
+    @include size(100%,100%);
+    @include flexbox(space-around,center,column);
+  }
+  .form-inputs {
+    max-width: 500px;
+    width: 100%;
+  }
+  .date-container {
+    @include flexbox(space-between);
+    .date-input-container {
+      width: 100%;
+      input {
+        @include size(100%,2rem);
+        border: 2px solid $themeColor;
+        background-color: transparent;
+        border-radius: 1rem;
+        text-align: end;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+      input[type=date]:invalid::-webkit-datetime-edit {
+        color: $placeholderColor;
+      }
+      label {
+        font-size: 1.2rem;
+      }
+      &:last-child {
+        margin-left: 2rem;
+      }
+    }
+  }
+  .departure-city-input {
+    @include flexbox(center,center);
+    height: 5vh;
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    select {
+      @include size(70%,2rem);
+      font-size: 1.2rem;
+      border: 2px solid $themeColor;
+      border-radius: 1rem;
+      text-align: center;
+      text-align-last: center;
+      margin-left: 0.5rem;
+      background-color: transparent;
+      appearance: none;
+      cursor: pointer;
+      &:required:invalid {
+        color: $placeholderColor;
+    }
+    }
+  }
+  .budget-input {
+    @include flexbox(center,center);
+    height: 5vh;
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    input {
+      @include size(67%,2rem);
+      border: 2px solid $themeColor;
+      border-radius: 1rem;
+      margin-left: 0.5rem;
+      font-size: 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      &::placeholder {
+        color: $placeholderColor;
+      }
+    }
+  }
+  .search-logo {
+    @include size(100%,100%);
+    @include flexbox(center,center);
+    .trip-btn {
+      @include size(150px,150px);
+      background: transparent url("../images/logo.png") no-repeat center center;
+      background-size: contain;
+      border: none;
+      color: transparent;
+      cursor: pointer;
+    }
+  }
+}
 
 .error-message {
   padding: 1rem;
 }
 
 .home-btn {
+  @include flexbox(center);
   height: 100%;
-  display: flex;
-  justify-content: center;
-  a>img{
+  a > img{
     height: 45px;
   }
-}
-
-.clearfix {
-  clear: both;
 }
 
 .trip-list {
   list-style: none;
   padding: 0;
 }
-
-
-
-
-
 
 .none {
   display: none;
@@ -310,96 +382,14 @@ a {
   margin: 29.5px;
 }
 
-.date-input-container input {
-  border: 2px solid $themeColor;
-  background-color: transparent;
-  border-radius: 1rem;
-  text-align: end;
-  font-size: 1rem;
-  height: 2rem;
-  width: 10rem;
- }
-
- .date-input-container label {
-  font-size: 1.2rem;
- }
-
-.date-container {
-  display: flex;
-  justify-content: space-around;
-  /* margin-top: 2rem; */
-}
-
-.budget-input {
-  /* padding: 3rem 0 0 5rem;
-  font-size: 1.2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 3rem; */
-  height: 5vh;
-  font-size: 1.2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 1rem;
-}
-
-.departure-city-input {
-  height: 5vh;
-  font-size: 1.2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 1rem;
-}
-
-.departure-city-input select {
-  font-size: 1.2rem;
-  border: 2px solid $themeColor;
-  border-radius: 1rem;
-  text-align: center;
-  text-align-last: center;
-  width: 50vw;
-  margin-left: 0.5rem;
-  background-color: transparent;
-  height: 2rem;
-}
-
 .search-error {
   font-size: 1.3rem;
   text-align: center;
 }
 
-.home-screen {
-  height: 91vh;
-  padding: 2rem 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
 button:focus {
   outline:none;
 }
-
-.budget-input input {
-  border: 2px solid $themeColor;
-  border-radius: 1rem;
-  height: 2rem;
-  margin-left: 0.5rem;
-  font-size: 1.5rem;
-  width: 7rem;
-  text-align: center;
-}
-
-.trip-btn {
-  background: transparent url("../images/logo.png") no-repeat center center;
-  background-size: contain;
-  padding: 80px;
-  border: none;
-  color: transparent;
- }
 
 .flight-image {
   background: url("../images/flight.jpg") no-repeat center center;
@@ -451,19 +441,36 @@ button:focus {
   position: relative;
   width: 100%;
   overflow: hidden;
-}
-
-.tab input {
-  position: absolute;
-  opacity: 0;
-  z-index: -1;
-}
-.tab label {
-  @include flexbox(center,center);
-  position: relative;
-  padding: 0;
-  cursor: pointer;
-  height: 27vh;
+  input {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+  }
+  label {
+    @include flexbox(center,center);
+    position: relative;
+    padding: 0;
+    cursor: pointer;
+    height: 27vh;
+  }
+  /* :checked */
+  input:checked ~ .tab-content {
+    max-height: 100vh;
+  }
+  /* Icon */
+  label::after {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    width: 3em;
+    height: 3em;
+    line-height: 3;
+    text-align: center;
+    -webkit-transition: all .35s;
+    -o-transition: all .35s;
+    transition: all .35s;
+  }
 }
 
 .bkRGBA{
@@ -477,27 +484,9 @@ button:focus {
   -webkit-transition: max-height .35s;
   -o-transition: max-height .35s;
   transition: max-height .35s;
-}
-.tab-content p {
-  margin: 1em;
-}
-/* :checked */
-.tab input:checked ~ .tab-content {
-  max-height: 100vh;
-}
-/* Icon */
-.tab label::after {
-  position: absolute;
-  right: 0;
-  top: 0;
-  display: block;
-  width: 3em;
-  height: 3em;
-  line-height: 3;
-  text-align: center;
-  -webkit-transition: all .35s;
-  -o-transition: all .35s;
-  transition: all .35s;
+  p {
+    margin: 1em;
+  }
 }
 
 .my-trips-title {
@@ -508,6 +497,9 @@ button:focus {
   display: flex;
   border-bottom: 1px solid darkgray;
   padding: 0.3rem 1.5rem;
+  p {
+    margin: 0;
+  }
 }
 
 .city-name-container {
@@ -517,10 +509,6 @@ button:focus {
 
 .trip-date-container {
   width: 25vw;
-}
-
-.one-trip-container p {
-  margin: 0;
 }
 
 .trip-price-container {
@@ -535,11 +523,10 @@ button:focus {
 
 .trip-detail-title {
   text-align: center;
-}
-
-.trip-detail-title h2 {
-  margin: 0.5rem;
-  font-size: 1.5rem;
+  h2 {
+    margin: 0.5rem;
+    font-size: 1.5rem;
+  }
 }
 
 .city-name h3 {
@@ -560,18 +547,16 @@ button:focus {
   display: flex;
   color: gray;
   padding: 0.5rem 0;
-}
-
-.duration-container p {
-  margin: 0;
+  p {
+    margin: 0;
+  }
 }
 
 .flight-card-info {
   display: flex;
-}
-
-.flight-card-info p {
-  margin: 0;
+  p {
+    margin: 0;
+  }
 }
 
 .duration-info {
@@ -598,52 +583,47 @@ button:focus {
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   margin: 0.5rem;
-}
-
-.accommodation-info-container p {
-  margin: 0;
+  p {
+    margin: 0;
+  }
 }
 
 .info-title-container {
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 1rem;
-}
-
-.info-title-container h3 {
-  margin: 0;
+  h3 {
+    margin: 0;
+  }
 }
 
 .title-card {
   position: relative;
   height: 100%;
   margin: 0px 1rem;
-}
-
-.title-card p {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%,-50%);
-  -webkit-transform: translate(-50%,-50%);
-  transform: translate(-50%,-50%);
-  width: 100%;
+  p {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    width: 100%;
+  }
 }
 
 .details-btn {
   display: flex;
   justify-content: space-around;
-}
-
-.details-btn img {
-  height: 45px;
-  background-color: transparent;
-}
-
-.details-btn button {
-  background: none;
-  border: none;
+  img {
+    height: 45px;
+    background-color: transparent;
+  }
+  button {
+    background: none;
+    border: none;
+  }
 }
 
 .my-trip-title {

@@ -22,10 +22,6 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-main {
-  height: 100vh;
-}
-
 a {
   color: #00B7FF;
   text-decoration: none;
@@ -35,6 +31,48 @@ a {
 
 a:hover {
   color: tomato;
+}
+
+.splash-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #47a7cf;
+  height: 100vh;
+}
+
+.splash-container .splash-logo {
+  width: 40vw;
+  max-width: 300px;
+}
+
+.splash-container .splash-logo img {
+  width: 100%;
+}
+
+.splash-container .get-started {
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 4rem;
+}
+
+.splash-container .get-started a {
+  color: #47a7cf;
+  background-color: white;
+  -webkit-box-shadow: 0px 8px 14px #333232;
+          box-shadow: 0px 8px 14px #333232;
+  border-radius: 2rem;
+  padding: 0.5rem;
 }
 
 .nav-bar {
@@ -47,21 +85,26 @@ a:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 100vw;
+  height: 65px;
   position: -webkit-sticky;
   position: sticky;
   z-index: 50;
-  margin: 0;
-  padding: 0;
   color: #cdcdcd;
   font-family: "Avenir Next", "Avenir", sans-serif;
   border-bottom: 1px solid grey;
   -webkit-box-shadow: 0 4px 6px -6px #222;
           box-shadow: 0 4px 6px -6px #222;
+  padding: 1rem;
 }
 
-.nav-bar .nav-bar-logo img {
+.nav-bar img {
   height: 45px;
-  padding-right: 10px;
+}
+
+.nav-bar .nav-title {
+  color: #47a7cf;
+  text-decoration: none;
 }
 
 #menuToggle {
@@ -73,15 +116,14 @@ a:hover {
           justify-content: space-between;
   position: -webkit-sticky;
   position: sticky;
-  padding: 1rem;
   z-index: 1;
   -webkit-user-select: none;
   -moz-user-select: none;
    -ms-user-select: none;
        user-select: none;
   /*
-  * Just a quick hamburger
-  */
+   * Just a quick hamburger
+   */
   /*
    * Transform all the slices of hamburger
    * into a crossmark.
@@ -90,11 +132,11 @@ a:hover {
    * But let's hide the middle one.
    */
   /*
-  * Ohyeah and the last one should go the other direction
-  */
+   * Ohyeah and the last one should go the other direction
+   */
   /*
-  * And let's slide it in from the left
-  */
+   * And let's slide it in from the left
+   */
 }
 
 #menuToggle input {
@@ -113,9 +155,9 @@ a:hover {
 }
 
 #menuToggle span {
-  display: block;
   width: 33px;
   height: 4px;
+  display: block;
   margin-bottom: 5px;
   position: relative;
   background: #cdcdcd;
@@ -171,9 +213,9 @@ a:hover {
 }
 
 /*
-  * Make this absolute positioned
-  * at the top left of the screen
-  */
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
 #menu {
   left: -350px;
   position: absolute;
@@ -198,53 +240,6 @@ a:hover {
 #menu li {
   padding: 10px 0 10px 45px;
   font-size: 22px;
-}
-
-.APP-name {
-  color: #47a7cf;
-  text-decoration: none;
-}
-
-.splash-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  background-color: #47a7cf;
-  height: 100vh;
-}
-
-.splash-container .splash-logo {
-  width: 40vw;
-  max-width: 300px;
-}
-
-.splash-container .splash-logo img {
-  width: 100%;
-}
-
-.splash-container .get-started {
-  text-align: center;
-  font-size: 2rem;
-  margin-top: 4rem;
-}
-
-.splash-container .get-started a {
-  color: #47a7cf;
-  background-color: white;
-  -webkit-box-shadow: 0px 8px 14px #333232;
-          box-shadow: 0px 8px 14px #333232;
-  border-radius: 2rem;
-  padding: 0.5rem;
 }
 
 .text-homepage {
@@ -315,6 +310,22 @@ a:hover {
   color: grey;
   margin: .75rem auto;
   outline: none;
+}
+
+.viewPort input::-webkit-input-placeholder {
+  color: #c8c8c8;
+}
+
+.viewPort input:-ms-input-placeholder {
+  color: #c8c8c8;
+}
+
+.viewPort input::-ms-input-placeholder {
+  color: #c8c8c8;
+}
+
+.viewPort input::placeholder {
+  color: #c8c8c8;
 }
 
 .viewPort button {
@@ -420,11 +431,158 @@ a:hover {
   color: tomato;
 }
 
-.error-message {
-  padding: 1rem;
+.home-screen {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: calc(100vh - 65px);
+  padding: 2rem 1rem;
 }
 
-.home-btn {
+.home-screen form {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.home-screen .form-inputs {
+  max-width: 500px;
+  width: 100%;
+}
+
+.home-screen .date-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.home-screen .date-container .date-input-container {
+  width: 100%;
+}
+
+.home-screen .date-container .date-input-container input {
+  width: 100%;
+  height: 2rem;
+  border: 2px solid #47a7cf;
+  background-color: transparent;
+  border-radius: 1rem;
+  text-align: end;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.home-screen .date-container .date-input-container input[type=date]:invalid::-webkit-datetime-edit {
+  color: #c8c8c8;
+}
+
+.home-screen .date-container .date-input-container label {
+  font-size: 1.2rem;
+}
+
+.home-screen .date-container .date-input-container:last-child {
+  margin-left: 2rem;
+}
+
+.home-screen .departure-city-input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 5vh;
+  font-size: 1.2rem;
+  margin: 1rem 0;
+}
+
+.home-screen .departure-city-input select {
+  width: 70%;
+  height: 2rem;
+  font-size: 1.2rem;
+  border: 2px solid #47a7cf;
+  border-radius: 1rem;
+  text-align: center;
+  text-align-last: center;
+  margin-left: 0.5rem;
+  background-color: transparent;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  cursor: pointer;
+}
+
+.home-screen .departure-city-input select:required:invalid {
+  color: #c8c8c8;
+}
+
+.home-screen .budget-input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 5vh;
+  font-size: 1.2rem;
+  margin: 1rem 0;
+}
+
+.home-screen .budget-input input {
+  width: 67%;
+  height: 2rem;
+  border: 2px solid #47a7cf;
+  border-radius: 1rem;
+  margin-left: 0.5rem;
+  font-size: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.home-screen .budget-input input::-webkit-input-placeholder {
+  color: #c8c8c8;
+}
+
+.home-screen .budget-input input:-ms-input-placeholder {
+  color: #c8c8c8;
+}
+
+.home-screen .budget-input input::-ms-input-placeholder {
+  color: #c8c8c8;
+}
+
+.home-screen .budget-input input::placeholder {
+  color: #c8c8c8;
+}
+
+.home-screen .search-logo {
+  width: 100%;
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -432,14 +590,37 @@ a:hover {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.home-screen .search-logo .trip-btn {
+  width: 150px;
+  height: 150px;
+  background: transparent url("../images/logo.png") no-repeat center center;
+  background-size: contain;
+  border: none;
+  color: transparent;
+  cursor: pointer;
+}
+
+.error-message {
+  padding: 1rem;
+}
+
+.home-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100%;
 }
 
 .home-btn a > img {
   height: 45px;
-}
-
-.clearfix {
-  clear: both;
 }
 
 .trip-list {
@@ -455,117 +636,13 @@ a:hover {
   margin: 29.5px;
 }
 
-.date-input-container input {
-  border: 2px solid #47a7cf;
-  background-color: transparent;
-  border-radius: 1rem;
-  text-align: end;
-  font-size: 1rem;
-  height: 2rem;
-  width: 10rem;
-}
-
-.date-input-container label {
-  font-size: 1.2rem;
-}
-
-.date-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  /* margin-top: 2rem; */
-}
-
-.budget-input {
-  /* padding: 3rem 0 0 5rem;
-  font-size: 1.2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 3rem; */
-  height: 5vh;
-  font-size: 1.2rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 1rem;
-}
-
-.departure-city-input {
-  height: 5vh;
-  font-size: 1.2rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 1rem;
-}
-
-.departure-city-input select {
-  font-size: 1.2rem;
-  border: 2px solid #47a7cf;
-  border-radius: 1rem;
-  text-align: center;
-  text-align-last: center;
-  width: 50vw;
-  margin-left: 0.5rem;
-  background-color: transparent;
-  height: 2rem;
-}
-
 .search-error {
   font-size: 1.3rem;
   text-align: center;
 }
 
-.home-screen {
-  height: 91vh;
-  padding: 2rem 1rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
 button:focus {
   outline: none;
-}
-
-.budget-input input {
-  border: 2px solid #47a7cf;
-  border-radius: 1rem;
-  height: 2rem;
-  margin-left: 0.5rem;
-  font-size: 1.5rem;
-  width: 7rem;
-  text-align: center;
-}
-
-.trip-btn {
-  background: transparent url("../images/logo.png") no-repeat center center;
-  background-size: contain;
-  padding: 80px;
-  border: none;
-  color: transparent;
 }
 
 .flight-image {
@@ -630,6 +707,8 @@ button:focus {
   position: relative;
   width: 100%;
   overflow: hidden;
+  /* :checked */
+  /* Icon */
 }
 
 .tab input {
@@ -654,6 +733,23 @@ button:focus {
   height: 27vh;
 }
 
+.tab input:checked ~ .tab-content {
+  max-height: 100vh;
+}
+
+.tab label::after {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  width: 3em;
+  height: 3em;
+  line-height: 3;
+  text-align: center;
+  -webkit-transition: all .35s;
+  transition: all .35s;
+}
+
 .bkRGBA {
   width: 100%;
   height: 100%;
@@ -671,25 +767,6 @@ button:focus {
   margin: 1em;
 }
 
-/* :checked */
-.tab input:checked ~ .tab-content {
-  max-height: 100vh;
-}
-
-/* Icon */
-.tab label::after {
-  position: absolute;
-  right: 0;
-  top: 0;
-  display: block;
-  width: 3em;
-  height: 3em;
-  line-height: 3;
-  text-align: center;
-  -webkit-transition: all .35s;
-  transition: all .35s;
-}
-
 .my-trips-title {
   text-align: center;
 }
@@ -702,6 +779,10 @@ button:focus {
   padding: 0.3rem 1.5rem;
 }
 
+.one-trip-container p {
+  margin: 0;
+}
+
 .city-name-container {
   width: 80vw;
   /* margin-left: 2rem; */
@@ -709,10 +790,6 @@ button:focus {
 
 .trip-date-container {
   width: 25vw;
-}
-
-.one-trip-container p {
-  margin: 0;
 }
 
 .trip-price-container {

@@ -1,51 +1,49 @@
 <article class="home-screen">
   <form action="/trip" method="POST" name="tripForm">
-    <div class="date-container">
-      <div class="date-input-container">
-        <label for="departureDate">Departure</label><br>
-        <input type="date" min=<%= currentDate %> required pattern="^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$" name="departureDate" required>
+    <div class="form-inputs">
+      <div class="date-container">
+        <div class="date-input-container">
+          <label for="departureDate">Departure</label><br>
+          <input type="date" min=<%= currentDate %> required pattern="^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$" name="departureDate" required>
+        </div>
+        <div class="date-input-container">
+          <label for="returnDate">Return</label><br>
+          <input type="date" name="returnDate" min=<%= currentDate %> required>
+        </div>
       </div>
-      <div class="date-input-container">
-        <label for="returnDate">Return</label><br>
-        <input type="date" name="returnDate" min=<%= currentDate %> required>
+      <div class="departure-city-input">
+        <label for="departure-city">From</label>
+        <select name="departureCity" required>
+          <option selected value="">Choose a city</option>
+          <option  value="BCN">Barcelona</option>
+          <option  value="TXL">Berlin</option>
+          <option  value="MAD">Madrid</option>
+          <option  value="LHR">London Gatwick</option>
+          <option  value="LGW">London Heathrow</option>
+          <option  value="SYD">Sydney</option>
+          <option  value="HND">Tokyo</option>
+          <option  value="CDG">Paris</option>
+          <option  value="VLC">Valencia</option>
+        </select>
+      </div>
+      <div class="budget-input">
+        <label for="budget">Budget</label>
+        <input type="number" name="budget" min="200" required placeholder="€200~">
       </div>
     </div>
-    <div class="departure-city-input">
-      <label for="departure-city">From</label>
-      <select name="departureCity" required>
-        <option selected value="">Choose a city</option>
-        <option  value="BCN">Barcelona</option>
-        <option  value="TXL">Berlin</option>
-        <option  value="MAD">Madrid</option>
-        <option  value="LHR">London Gatwick</option>
-        <option  value="LGW">London Heathrow</option>
-        <option  value="SYD">Sydney</option>
-        <option  value="HND">Tokyo</option>
-        <option  value="CDG">Paris</option>
-        <option  value="VLC">Valencia</option>
-      </select>
-    </div>
-    <div class="budget-input">
-      <label for="budget">Budget</label>
-      <input type="number" name="budget" min="200" required>
-    </div>
-    <div class="search-logo-container">
-      <div class="logo">
-        <button class="trip-btn" type="submit"></button>
-      </div>
+    <div class="search-logo">
+      <button class="trip-btn" type="submit"></button>
     </div>
   </form>
-      <% if(errorMessage){ %>
-        <div class="error-message search-error">
-          <%errorMessage.forEach(message => { %>
-            <%= message %><br>
-          <% })%>
-        </div>
-      <% } %>
-  <div class="text-bottom">
-    <div class="text-homepage">
-      <p>Press the logo and get ready for the adventure</p>
+  <% if(errorMessage){ %>
+    <div class="error-message search-error">
+      <%errorMessage.forEach(message => { %>
+        <%= message %><br>
+      <% })%>
     </div>
+  <% } %>
+  <div class="text-homepage">
+    <p>Press the logo and get ready for the adventure</p>
   </div>
 </article>
 <script src="/javascripts/loadingScreen.js"></script>
