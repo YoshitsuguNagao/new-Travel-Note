@@ -33,21 +33,19 @@
       <div class="logo">
         <button class="trip-btn" type="submit"></button>
       </div>
+    </div>
+  </form>
       <% if(errorMessage){ %>
         <div class="error-message search-error">
-        <%errorMessage.forEach(message => { %>
-
-        <%= message %><br>
-        <% })%>
+          <%errorMessage.forEach(message => { %>
+            <%= message %><br>
+          <% })%>
         </div>
       <% } %>
-    </div>
-
-  </form>
   <div class="text-bottom">
-      <div class="text-homepage">
-        <p>Press the logo and get ready for the adventure</p>
-      </div>
+    <div class="text-homepage">
+      <p>Press the logo and get ready for the adventure</p>
     </div>
+  </div>
 </article>
 <script src="/javascripts/loadingScreen.js"></script>

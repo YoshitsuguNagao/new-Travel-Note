@@ -1,20 +1,9 @@
-<div class="auth-container-profile">
-  <form id="form" action="/profile" method="POST">
-    <h2>Profile</h2>
-    <div class="card">
-      <input type="text" name="username" value="<%= username%>">
-    </div>
-    <div class="card">
-      <input type="password" name="password" placeholder="********">
-    </div>
-    <div class="auth-btn-profile">
-      <button>Update</button>
-    </div>
-    <div class="clearfix"></div>
-  </form>
-</div>
-<div class="logout">
-  <form action="/auth/logout" method="get">
-    <button class="logout-btn">Logout</button>
-  </form>
-</div>
+<form class="profile-container" id="form" action="/profile" method="POST">
+  <h2>Profile</h2>
+  <input type="text" name="username" value="<%= username%>" placeholder="User Name">
+  <input type="password" name="password" placeholder="********">
+  <button>Update</button>
+</form>
+<form  class="logout" action="/auth/logout" method="GET">
+  <button class="logout-btn">Logout</button>
+</form>
