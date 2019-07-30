@@ -162,6 +162,7 @@ router.post('/', async (req, res, next) => {
       cost,
       activitySentence,
       departureCity,
+      mapboxKey: process.env.API_MAPBOX,
     });
   } catch (error) {
     next(error);
@@ -215,8 +216,11 @@ router.get('/my-trips', (req, res, next) => {
 router.get('/my-trips/:id', (req, res, next) => {
   const { id } = req.params;
   Trip.findById(id)
-    .then((trip) => {
-      res.render('trip-details', { trip });
+    .then((trips) => {
+      res.render('trip-details', {
+        trip: trips,
+        mapboxKey: process.env.API_MAPBOX,
+      });
     })
     .catch((error) => {
       next(error);

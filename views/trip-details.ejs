@@ -133,13 +133,13 @@
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
-  <% let lat = trip.accommodation.data2.value.hotel_geo_node.location.lat %>
-  <% let long = trip.accommodation.data2.value.hotel_geo_node.location.long %>
-  mapboxgl.accessToken = 'pk.eyJ1IjoieW9zaGl0c3VndW5hZ2FvIiwiYSI6ImNqczY3c3RyaDBsbGs0M3BmZ3RqcTVsOG8ifQ.hpeaiUl8jGY7iyU1smR3eg';
+  <% const lat = trip.accommodation.data2.value.hotel_geo_node.location.lat %>
+  <% const lng = trip.accommodation.data2.value.hotel_geo_node.location.long %>
+  mapboxgl.accessToken = "<%= mapboxKey %>";
   var map = new mapboxgl.Map({
   container: 'map', // container id
   style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location
-  center: [ <%=long%>, <%=lat%>], // starting position [lng, lat]
+  center: [ <%=lng%>, <%=lat%>], // starting position [lng, lat]
   zoom: 7 // starting zoom
   });
 </script>
