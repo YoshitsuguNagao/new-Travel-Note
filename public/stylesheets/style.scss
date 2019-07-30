@@ -495,8 +495,9 @@ button:focus {
   }
 }
 
-
-
+/*=============
+   Trip Screen
+  =============*/
 .flight-image {
   background: url("../images/flight.jpg") no-repeat center center;
   background-size: cover;
@@ -516,20 +517,26 @@ button:focus {
 }
 
 .tripView-btns {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 1rem;
-}
-
-.tripView-btn img{
-  height: 35px;
-}
-
-.tripView-btn-text{
-  color: white;
-  font-size: 1.5rem;
-  background-color: transparent;
-  border: none;
+  @include flexbox(space-around);
+  height: 65px;
+  .tripView-btn {
+    @include flexbox(center,center);
+  }
+  img{
+    height: 35px;
+  }
+  .refresh-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .save-btn{
+    color: white;
+    font-size: 1.5rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
 }
 
 .tab-title {
@@ -556,8 +563,8 @@ button:focus {
     @include flexbox(center,center);
     position: relative;
     padding: 0;
+    height: calc((100vh - 130px) / 3);
     cursor: pointer;
-    height: 27vh;
   }
   /* :checked */
   input:checked ~ .tab-content {
@@ -565,12 +572,11 @@ button:focus {
   }
   /* Icon */
   label::after {
+    @include size(3em,3em);
     position: absolute;
     right: 0;
     top: 0;
     display: block;
-    width: 3em;
-    height: 3em;
     line-height: 3;
     text-align: center;
     -webkit-transition: all .35s;
@@ -590,9 +596,6 @@ button:focus {
   -webkit-transition: max-height .35s;
   -o-transition: max-height .35s;
   transition: max-height .35s;
-  p {
-    margin: 1em;
-  }
 }
 
 .title-card {
@@ -609,12 +612,6 @@ button:focus {
     transform: translate(-50%,-50%);
     width: 100%;
   }
-}
-
-
-.refresh-btn {
-  background: none;
-  border: none;
 }
 
 /*
@@ -638,7 +635,6 @@ button:focus {
         transform:rotate(360deg);
     }
 } */
-
 
 .rotate {
   -webkit-animation-name: rotate;

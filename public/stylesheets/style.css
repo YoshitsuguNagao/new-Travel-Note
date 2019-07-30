@@ -786,6 +786,9 @@ button:focus {
   cursor: pointer;
 }
 
+/*=============
+   Trip Screen
+  =============*/
 .flight-image {
   background: url("../images/flight.jpg") no-repeat center center;
   background-size: cover;
@@ -810,18 +813,37 @@ button:focus {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  margin-top: 1rem;
+  height: 65px;
 }
 
-.tripView-btn img {
+.tripView-btns .tripView-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.tripView-btns img {
   height: 35px;
 }
 
-.tripView-btn-text {
+.tripView-btns .refresh-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.tripView-btns .save-btn {
   color: white;
   font-size: 1.5rem;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 
 .tab-title {
@@ -870,8 +892,8 @@ button:focus {
           align-items: center;
   position: relative;
   padding: 0;
+  height: calc((100vh - 130px) / 3);
   cursor: pointer;
-  height: 27vh;
 }
 
 .tab input:checked ~ .tab-content {
@@ -879,12 +901,12 @@ button:focus {
 }
 
 .tab label::after {
+  width: 3em;
+  height: 3em;
   position: absolute;
   right: 0;
   top: 0;
   display: block;
-  width: 3em;
-  height: 3em;
   line-height: 3;
   text-align: center;
   -webkit-transition: all .35s;
@@ -904,10 +926,6 @@ button:focus {
   transition: max-height .35s;
 }
 
-.tab-content p {
-  margin: 1em;
-}
-
 .title-card {
   position: relative;
   height: 100%;
@@ -922,11 +940,6 @@ button:focus {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   width: 100%;
-}
-
-.refresh-btn {
-  background: none;
-  border: none;
 }
 
 /*
