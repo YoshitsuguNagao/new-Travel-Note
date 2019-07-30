@@ -19,6 +19,10 @@ a {
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
 }
 
+button:focus {
+  outline:none;
+}
+
 /*===============
    Splash Screen
   ===============*/
@@ -369,9 +373,22 @@ a {
   }
 }
 
+.text-homepage {
+  font-size: 1.5rem;
+  padding: 0rem 2rem;
+  text-align: center;
+  color: $themeColor;
+}
+
 .error-message {
   padding: 1rem;
 }
+
+.search-error {
+  font-size: 1.3rem;
+  text-align: center;
+}
+
 /*================
    My Trip Screen
   ================*/
@@ -403,7 +420,6 @@ a {
   }
 }
 
-
 .home-btn {
   @include flexbox(center);
   margin-top: 1rem;
@@ -413,22 +429,73 @@ a {
   }
 }
 
-
-
-
-
-.empty-container {
-  margin: 29.5px;
-}
-
-.search-error {
-  font-size: 1.3rem;
+/*====================
+   Trip detail Screen
+  ====================*/
+.trip-detail-title {
   text-align: center;
+  margin: 1rem 0;
 }
 
-button:focus {
-  outline:none;
+.my-trip-title {
+  @include flexbox(space-between,center);
+  font-size: 1.5rem;
+  padding-right: 0.5rem;
+  .city-name {
+    color: $themeColor;
+    padding: 1rem;
+    margin: 0;
+    font-size: 2rem;
+  }
 }
+
+.info-title-container {
+  @include flexbox(space-between);
+  padding: 0.5rem 1rem;
+}
+
+.trip-info-container {
+  border: 1px solid darkgray;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  margin: 0.5rem;
+  .duration-container {
+    display: flex;
+    color: gray;
+    padding-bottom: 0.5rem;
+  }
+  .duration-info {
+    margin-left: 1rem;
+  }
+  .flight-card {
+    border: 1px solid lightgray;
+    border-radius: 0.5rem;
+    padding: 0.3rem;
+    margin-top: 0.5rem;
+    .flight-card-info {
+      display: flex;
+    }
+    .flight-hour {
+      margin-right: 1rem;
+    }
+  }
+}
+
+.details-btn {
+  display: flex;
+  justify-content: space-around;
+  img {
+    height: 45px;
+    background-color: transparent;
+  }
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+}
+
+
 
 .flight-image {
   background: url("../images/flight.jpg") no-repeat center center;
@@ -528,86 +595,6 @@ button:focus {
   }
 }
 
-
-
-
-
-.trip-detail-title {
-  text-align: center;
-  h2 {
-    margin: 0.5rem;
-    font-size: 1.5rem;
-  }
-}
-
-.city-name h3 {
-  padding: 1rem;
-  margin: 0;
-  font-size: 2rem;
-  color: $themeColor;
-}
-
-.oneway-container {
-  border: 1px solid darkgray;
-  padding: 0 1rem;
-  border-radius: 0.5rem;
-  margin: 0.5rem;
-}
-
-.duration-container {
-  display: flex;
-  color: gray;
-  padding: 0.5rem 0;
-  p {
-    margin: 0;
-  }
-}
-
-.flight-card-info {
-  display: flex;
-  p {
-    margin: 0;
-  }
-}
-
-.duration-info {
-  margin-left: 1rem;
-}
-
-.flight-card {
-  border: 1px solid lightgray;
-  border-radius: 0.5rem;
-  padding: 0.3rem;
-  margin: 0.5rem 0;
-}
-
-.flight-hour {
-  margin-right: 1rem;
-}
-
-.flight-date p {
-  margin: 0;
-}
-
-.accommodation-info-container {
-  border: 1px solid darkgray;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  margin: 0.5rem;
-  p {
-    margin: 0;
-  }
-}
-
-.info-title-container {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.5rem 1rem;
-  h3 {
-    margin: 0;
-  }
-}
-
 .title-card {
   position: relative;
   height: 100%;
@@ -624,31 +611,6 @@ button:focus {
   }
 }
 
-.details-btn {
-  display: flex;
-  justify-content: space-around;
-  img {
-    height: 45px;
-    background-color: transparent;
-  }
-  button {
-    background: none;
-    border: none;
-  }
-}
-
-.my-trip-title {
-  display: flex;
-  align-items: center;
-  font-size: 1.5rem;
-  padding-right: 0.5rem;
-  justify-content: space-between;
-}
-
-.my-trip-price-container {
-  display: flex;
-  align-items: center;
-}
 
 .refresh-btn {
   background: none;
