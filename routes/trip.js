@@ -48,7 +48,7 @@ router.post('/', async (req, res, next) => {
     /* Get flight info */
     const flightBudget = budget / 2;
     const getFlightInfo = await axios.get(`https://api.skypicker.com/flights?fly_from=${departureCity}&date_from=${departureDateForFlight}&date_to=${departureDateForFlight}&return_from=${returnDateForFlight}&return_to=${returnDateForFlight}&curr=EUR&price_to=${flightBudget}&one_for_city=1&max_stopovers=0`);
-    console.log('getFlightInfo', getFlightInfo.data.data);
+    // console.log('getFlightInfo', getFlightInfo.data.data);
     const selectedFlightInfo = [];
     const selectedAccommodationInfo = [];
     getFlightInfo.data.data.forEach((oneFlightData) => {
@@ -57,6 +57,7 @@ router.post('/', async (req, res, next) => {
         selectedFlightInfo.push(oneFlightData);
       }
     });
+    console.log('selectedFlightInfo.length', selectedFlightInfo.length);
     if (selectedFlightInfo.length < 1) {
       req.flash('info', 'There was no available flight...');
       req.flash('info', 'Search for a different trip!');
