@@ -48,6 +48,7 @@ router.post('/', async (req, res, next) => {
     /* Get flight info */
     const flightBudget = budget / 2;
     const getFlightInfo = await axios.get(`https://api.skypicker.com/flights?fly_from=${departureCity}&date_from=${departureDateForFlight}&date_to=${departureDateForFlight}&return_from=${returnDateForFlight}&return_to=${returnDateForFlight}&curr=EUR&price_to=${flightBudget}&one_for_city=1&max_stopovers=0`);
+    console.log('getFlightInfo', getFlightInfo)
     const selectedFlightInfo = [];
     const selectedAccommodationInfo = [];
     getFlightInfo.data.data.forEach((oneFlightData) => {
@@ -88,6 +89,7 @@ router.post('/', async (req, res, next) => {
     // console.log(accommodationData2);
 
     const getAccommodationList = await axios.get(`http://developer.goibibo.com/api/cyclone/?app_id=${process.env.GOIBIBO_APP_IP}&app_key=${process.env.GOIBIBO_APP_KEY}&city_id=${cityInfo.cityId}&check_in=${departureDateForAccommodation}&check_out=${returnDateForAccommodation}`);
+    console.log('getAccommodationList', getAccommodationList);
     const accommodationBudgetInr = 79.72 * accommodationBudgetEur / tripDuration;
     const accommodationIdList = Object.keys(getAccommodationList.data.data);
 
