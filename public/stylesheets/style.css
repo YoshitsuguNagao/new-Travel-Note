@@ -33,10 +33,6 @@ a:hover {
   color: tomato;
 }
 
-.none {
-  display: none;
-}
-
 .loading {
   -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
   transition: -webkit-transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
@@ -254,6 +250,10 @@ button:focus {
 #menu li {
   padding: 10px 0 10px 45px;
   font-size: 22px;
+}
+
+.none {
+  display: none;
 }
 
 /*=============

@@ -18,8 +18,11 @@
   <header>
     <% if(currentUser){ %>
       <nav role="navigation" class="nav-bar">
+      <% console.log("1",currentUser)%>
     <% }else{ %>
       <nav role="navigation" class="nav-bar none">
+      <% console.log("2",currentUser)%>
+
     <% }%>
         <div id="menuToggle">
           <div>
