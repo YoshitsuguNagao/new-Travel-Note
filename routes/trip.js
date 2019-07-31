@@ -11,20 +11,6 @@ const { ObjectId } = mongoose.Types;
 
 const router = express.Router();
 
-
-// router.get('/', (req, res, next) => {
-//   res.send('respond with a resource');
-//   res.render('trip', { data })
-//   console.log('I am in get /trip');
-//   City.find({})
-//   .then((cities) => {
-//     const num = Math.floor(Math.random() * cities.length);
-//     const city = cities[num];
-//     res.render('trip', { city });
-//   })
-//   .catch(next);
-// });
-
 router.post('/', async (req, res, next) => {
   try {
     const {
@@ -48,7 +34,6 @@ router.post('/', async (req, res, next) => {
     /* Get flight info */
     const flightBudget = budget / 2;
     const getFlightInfo = await axios.get(`https://api.skypicker.com/flights?fly_from=${departureCity}&date_from=${departureDateForFlight}&date_to=${departureDateForFlight}&return_from=${returnDateForFlight}&return_to=${returnDateForFlight}&curr=EUR&price_to=${flightBudget}&one_for_city=1&max_stopovers=0`);
-    // console.log('getFlightInfo', getFlightInfo.data.data);
     const selectedFlightInfo = [];
     const selectedAccommodationInfo = [];
     getFlightInfo.data.data.forEach((oneFlightData) => {
@@ -57,7 +42,6 @@ router.post('/', async (req, res, next) => {
         selectedFlightInfo.push(oneFlightData);
       }
     });
-    console.log('selectedFlightInfo.length', selectedFlightInfo.length);
     if (selectedFlightInfo.length < 1) {
       req.flash('info', 'There was no available flight...');
       req.flash('info', 'Search for a different trip!');
@@ -66,31 +50,12 @@ router.post('/', async (req, res, next) => {
     }
     const flightData = selectedFlightInfo[Math.floor(Math.random() * selectedFlightInfo.length)];
     const flightCost = flightData.price;
-    // console.log('flightCost,flightData', flightCost, flightData);
     /* Get Accommodation info */
     const accommodationBudgetEur = budget - flightCost;
     const cityName = flightData.cityTo;
     const cityInfo = await CityList.findOne({ cityName }, { cityId: 1, _id: 0 });
 
-    // const start = new Date();
-    // const acc = await axios.all([getAccommodationList(cityInfo, departureDateForAccommodation, returnDateForAccommodation), getAccommodationInfo(cityInfo)])
-    //   .then((axios.spread((accommodationList, accommodationInfo) => {
-    //     console.log(accommodationList);
-    //     console.log(accommodationInfo);
-    //     return [accommodationList, accommodationInfo];
-    //   })));
-    // console.log('axios finnish ', new Date() - start);
-
-    // const accommodationIdList = Object.keys(acc[0].data.data);
-    // const accommodationId = accommodationIdList[Math.floor(Math.random() * accommodationIdList.length)];
-    // const accommodationData1 = Object.getOwnPropertyDescriptor(acc[0].data.data, accommodationId);
-    // console.log(accommodationData1);
-
-    // const accommodationData2 = Object.getOwnPropertyDescriptor(acc[1].data.data, accommodationId);
-    // console.log(accommodationData2);
-
     const getAccommodationList = await axios.get(`http://developer.goibibo.com/api/cyclone/?app_id=${process.env.GOIBIBO_APP_IP}&app_key=${process.env.GOIBIBO_APP_KEY}&city_id=${cityInfo.cityId}&check_in=${departureDateForAccommodation}&check_out=${returnDateForAccommodation}`);
-    console.log('getAccommodationList', getAccommodationList);
     const accommodationBudgetInr = 79.72 * accommodationBudgetEur / tripDuration;
     const accommodationIdList = Object.keys(getAccommodationList.data.data);
 
@@ -106,7 +71,6 @@ router.post('/', async (req, res, next) => {
       req.flash('info', 'Search for a different trip!');
       res.redirect('/home');
       return;
-      // return res.redirect('/home');
     }
     const accommodationData1 = selectedAccommodationInfo[Math.floor(Math.random() * selectedAccommodationInfo.length)];
     const getAccommodationInfo = await axios.get(`http://developer.goibibo.com/api/voyager/?app_id=${process.env.GOIBIBO_APP_IP}&app_key=${process.env.GOIBIBO_APP_KEY}&method=hotels.get_hotels_data&id_list=[${accommodationData1.accommodationId}]&id_type=_id`);
@@ -130,9 +94,6 @@ router.post('/', async (req, res, next) => {
 
     const activitiesList = [...amusementParkListSorted, ...artGalleryListSorted, ...churchListSorted, parkListSorted, ...nightClubListSorted];
     const activity = activitiesList[(Math.floor(Math.random() * activitiesList.length))];
-    // console.log('activity', activity);
-    // console.log('activity name', activity.name);
-    // console.log(activitiesList.length);
     const typeArr = activity.types;
     let activitySentence = 'Go the infomation center!';
 
@@ -171,14 +132,6 @@ router.post('/', async (req, res, next) => {
     next(error);
   }
 });
-
-// function getAccommodationList(cityInfo, departureDateForAccommodation, returnDateForAccommodation) {
-//   return axios.get(`http://developer.goibibo.com/api/cyclone/?app_id=${process.env.GOIBIBO_APP_IP}&app_key=${process.env.GOIBIBO_APP_KEY}&city_id=${cityInfo.cityId}&check_in=${departureDateForAccommodation}&check_out=${returnDateForAccommodation}`);
-// }
-
-// function getAccommodationInfo(cityInfo) {
-//   return axios.get(`http://developer.goibibo.com/api/voyager/get_hotels_by_cityid/?app_id=${process.env.GOIBIBO_APP_IP}&app_key=${process.env.GOIBIBO_APP_KEY}&city_id=${cityInfo.cityId}`);
-// }
 
 router.post('/save', (req, res, next) => {
   let { cost, flightData, accommodationData1, accommodationData2, activity } = req.body;
