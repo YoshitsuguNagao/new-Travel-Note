@@ -114,15 +114,15 @@ router.post('/', async (req, res, next) => {
     const latitude = accommodationData2.value.hotel_geo_node.location.lat;
     const longitude = accommodationData2.value.hotel_geo_node.location.long;
 
-    const amusementParkList = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=amusement_park&key=${process.env.API_ACCOMMODATION_KEY}`);
+    const amusementParkList = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=amusement_park&key=${process.env.GOOGLE_PLACES_API}`);
     const amusementParkListSorted = amusementParkList.data.results.slice(0, 5);
-    const artGalleryList = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=art_gallery&key=${process.env.API_ACCOMMODATION_KEY}`);
+    const artGalleryList = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=art_gallery&key=${process.env.GOOGLE_PLACES_API}`);
     const artGalleryListSorted = artGalleryList.data.results.slice(0, 5);
-    const churchList = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=church&key=${process.env.API_ACCOMMODATION_KEY}`);
+    const churchList = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=church&key=${process.env.GOOGLE_PLACES_API}`);
     const churchListSorted = churchList.data.results.slice(0, 5);
-    const parkList = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=park&key=${process.env.API_ACCOMMODATION_KEY}`);
+    const parkList = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=park&key=${process.env.GOOGLE_PLACES_API}`);
     const parkListSorted = parkList.data.results.slice(0, 5);
-    const nightClubList = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=night_club&key=${process.env.API_ACCOMMODATION_KEY}`);
+    const nightClubList = await axios.get(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${latitude},${longitude}&radius=5000&type=night_club&key=${process.env.GOOGLE_PLACES_API}`);
     const nightClubListSorted = nightClubList.data.results.slice(0, 5);
 
     const activitiesList = [...amusementParkListSorted, ...artGalleryListSorted, ...churchListSorted, parkListSorted, ...nightClubListSorted];
@@ -162,7 +162,7 @@ router.post('/', async (req, res, next) => {
       cost,
       activitySentence,
       departureCity,
-      mapboxKey: process.env.API_MAPBOX,
+      mapboxKey: process.env.MAPBOX_API,
     });
   } catch (error) {
     next(error);
@@ -219,7 +219,7 @@ router.get('/my-trips/:id', (req, res, next) => {
     .then((trips) => {
       res.render('trip-details', {
         trip: trips,
-        mapboxKey: process.env.API_MAPBOX,
+        mapboxKey: process.env.MAPBOX_API,
       });
     })
     .catch((error) => {
