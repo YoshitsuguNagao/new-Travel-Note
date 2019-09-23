@@ -101,7 +101,7 @@ The url to your repository and to your deployed project
 
 [Repository Link](https://github.com/YoshitsuguNagao/Travel-Note)
 
-[Deploy Link](http://heroku.com)
+[Deploy Link](https://travel-note-app.herokuapp.com/)
 
 ### Slides
 
